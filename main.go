@@ -66,7 +66,7 @@ func main() {
 	for msg := range rtm.IncomingEvents {
 		fmt.Print("Event Received: ")
 
-		switch eventType := msg.Data.(type) {
+		switch slackEvent := msg.Data.(type) {
 		case *slack.HelloEvent:
 			// Ignore hello
 			// fmt.Println("HELLO!")
@@ -76,20 +76,27 @@ func main() {
 
 		case *slack.MessageEvent:
 			info := rtm.GetInfo()
-			prefix := fmt.Sprintf("<@%s> ", info.User.ID)
+			gtmPrefix := fmt.Sprintf("<@%s> gtm", info.User.ID)
 
-			if eventType.User != info.User.ID && strings.HasPrefix(eventType.Text, prefix) {
-				respond(rtm, eventType, prefix)
+			// @TODO parse request for GTM and build API calls
+			if slackEvent.User != info.User.ID && strings.HasPrefix(slackEvent.Text, gtmPrefix) {
+				rtm.SendMessage(rtm.NewOutgoingMessage("google tag manager integration coming soon!", slackEvent.Channel))
+				break
+			}
+
+			// fallback to generic responses
+			if slackEvent.User != info.User.ID && strings.HasPrefix(slackEvent.Text, fmt.Sprintf("<@%s> ", info.User.ID)) {
+				respond(rtm, slackEvent, fmt.Sprintf("<@%s> ", info.User.ID))
 			}
 
 		case *slack.PresenceChangeEvent:
-			fmt.Printf("Presence Change: %v\n", eventType)
+			fmt.Printf("Presence Change: %v\n", slackEvent)
 
 		case *slack.LatencyReport:
-			fmt.Printf("Current latency: %v\n", eventType.Value)
+			fmt.Printf("Current latency: %v\n", slackEvent.Value)
 
 		case *slack.RTMError:
-			fmt.Printf("Error: %s\n", eventType.Error())
+			fmt.Printf("Error: %s\n", slackEvent.Error())
 
 		case *slack.InvalidAuthEvent:
 			fmt.Printf("Invalid credentials")
