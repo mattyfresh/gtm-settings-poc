@@ -9,10 +9,10 @@ import (
 	"github.com/nlopes/slack"
 )
 
-func respond(rtm *slack.RTM, msg *slack.MessageEvent, prefix string) {
+func genericResponse(rtm *slack.RTM, msg *slack.MessageEvent, prefix string) {
 	text := msg.Text
 
-	// get username of the person who mentioed the bot
+	// get username of the person who mentioned the bot
 	user, err := rtm.GetUserInfo(msg.User)
 	if err != nil {
 		fmt.Println("error retrieving user name", err)
@@ -86,7 +86,7 @@ func main() {
 
 			// fallback to generic responses
 			if slackEvent.User != info.User.ID && strings.HasPrefix(slackEvent.Text, fmt.Sprintf("<@%s> ", info.User.ID)) {
-				respond(rtm, slackEvent, fmt.Sprintf("<@%s> ", info.User.ID))
+				genericResponse(rtm, slackEvent, fmt.Sprintf("<@%s> ", info.User.ID))
 			}
 
 		case *slack.PresenceChangeEvent:
