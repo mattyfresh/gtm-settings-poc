@@ -1,4 +1,4 @@
-package main
+package services
 
 import (
 	"context"
@@ -21,8 +21,8 @@ func createHTTPClient(scope ...string) (*http.Client, error) {
 	return client, nil
 }
 
-// ConfigureService returns a reference to the GTM service
-func ConfigureService() (*gtm.Service, error) {
+// ConfigureGTMService returns a reference to the GTM service
+func ConfigureGTMService() (*gtm.Service, error) {
 	// create HTTP client and add the correct scope/permissions
 	client, createClientErr := createHTTPClient(
 		gtm.TagmanagerEditContainersScope,

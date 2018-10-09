@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"go-bot/controllers"
 	"log"
 	"os"
 	"strings"
@@ -51,11 +52,11 @@ func main() {
 
 	// slack API service
 	service := slack.New(token)
-	service.SetDebug(true)
+	slack.OptionDebug(true)
 
 	// log to stdout so we can see what's going on
 	logger := log.New(os.Stdout, "slack-bot: ", log.Lshortfile|log.LstdFlags)
-	slack.SetLogger(logger)
+	slack.OptionLog(logger)
 
 	// real time messaging service
 	rtm := service.NewRTM()
@@ -64,15 +65,11 @@ func main() {
 	go rtm.ManageConnection()
 
 	for msg := range rtm.IncomingEvents {
-		fmt.Print("Event Received: ")
-
 		switch slackEvent := msg.Data.(type) {
-		case *slack.HelloEvent:
-			// Ignore hello
-			// fmt.Println("HELLO!")
+		// case *slack.HelloEvent:
+		// fmt.Println("HELLO!")
 		case *slack.ConnectedEvent:
-			// fmt.Println("Infos:", eventType.Info)
-			// fmt.Println("Connection counter:", eventType.ConnectionCount)
+			fmt.Println("Connected to slack: ", slackEvent.Info)
 
 		case *slack.MessageEvent:
 			info := rtm.GetInfo()
@@ -80,7 +77,7 @@ func main() {
 
 			// @TODO parse request for GTM and build API calls
 			if slackEvent.User != info.User.ID && strings.HasPrefix(slackEvent.Text, gtmPrefix) {
-				rtm.SendMessage(rtm.NewOutgoingMessage("google tag manager integration coming soon!", slackEvent.Channel))
+				controllers.GtmHandler(slackEvent, rtm)
 				break
 			}
 
@@ -89,17 +86,17 @@ func main() {
 				genericResponse(rtm, slackEvent, fmt.Sprintf("<@%s> ", info.User.ID))
 			}
 
-		case *slack.PresenceChangeEvent:
-			fmt.Printf("Presence Change: %v\n", slackEvent)
+		// case *slack.PresenceChangeEvent:
+		// 	fmt.Printf("Presence Change: %v\n", slackEvent)
 
-		case *slack.LatencyReport:
-			fmt.Printf("Current latency: %v\n", slackEvent.Value)
+		// case *slack.LatencyReport:
+		// 	fmt.Printf("Current latency: %v\n", slackEvent.Value)
 
 		case *slack.RTMError:
 			fmt.Printf("Error: %s\n", slackEvent.Error())
 
 		case *slack.InvalidAuthEvent:
-			fmt.Printf("Invalid credentials")
+			fmt.Printf("Invalid credentials, ensure you have SLACK_BOT_API_TOKEN set as an ENV variable!")
 			return
 
 		default:
