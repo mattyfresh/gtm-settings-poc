@@ -1,6 +1,6 @@
 #!/bin/bash
 REPO="https://github.com/mattyfresh/gtm-settings-poc"
-BRANCH_NAME="gitignore-test"
+BRANCH_NAME="$1"
 
 # Config
 git config credential.helper "cache --timeout=120"

@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 
 	"github.com/nlopes/slack"
 	gtm "google.golang.org/api/tagmanager/v2"
@@ -210,7 +211,8 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 		fmt.Fprint(file, string(outputJSON))
 
 		// create PR in GitHub
-		command := exec.Command("/bin/bash", "github-commit.sh")
+		branchName := "workspace-" + workspaceID + "-" + fmt.Sprintf("%d", time.Now().Unix())
+		command := exec.Command("/bin/bash", "github-commit.sh", branchName)
 		absPath, absPathErr := filepath.Abs(".")
 		if absPathErr != nil {
 			fmt.Println(absPathErr.Error())
@@ -223,7 +225,7 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 			return
 		}
 
-		resp := strings.Split(string(out), "@@@")
-		sendMessage(fmt.Sprintf(":shipit: Publish success! Click below to create a PR:\n\n %s", resp[1]), msg.Channel)
+		pullRequestLink := strings.Split(string(out), "@@@")[1]
+		sendMessage(fmt.Sprintf(":shipit: Publish success! Click below to create a PR:\n\n %s", pullRequestLink), msg.Channel)
 	}
 }
