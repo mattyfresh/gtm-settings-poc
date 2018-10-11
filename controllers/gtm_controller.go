@@ -211,7 +211,7 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 		fmt.Fprint(file, string(outputJSON))
 
 		// create PR in GitHub
-		branchName := "workspace-" + workspaceID + "-" + fmt.Sprintf("%d", time.Now().Unix())
+		branchName := fmt.Sprintf("workspace-%s-%d", workspaceID, time.Now().Unix())
 		command := exec.Command("/bin/bash", "github-commit.sh", branchName)
 		absPath, absPathErr := filepath.Abs(".")
 		if absPathErr != nil {
