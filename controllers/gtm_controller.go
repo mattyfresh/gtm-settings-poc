@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"go-bot/services"
 	"os"
+	"os/exec"
+	"path/filepath"
 	"regexp"
 	"strings"
 
@@ -188,8 +190,6 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 
 	if commandType == "publish" {
 		// write current GTM state to file
-		sendMessage(":shipit: Publishing New GTM Config to GitHub", msg.Channel)
-
 		allOutput := make([]interface{}, 3)
 		allOutput[0] = allTriggers
 		allOutput[1] = allTags
@@ -210,6 +210,20 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 		fmt.Fprint(file, string(outputJSON))
 
 		// create PR in GitHub
-		// @TODO
+		command := exec.Command("/bin/bash", "github-commit.sh")
+		absPath, absPathErr := filepath.Abs(".")
+		if absPathErr != nil {
+			fmt.Println(absPathErr.Error())
+			return
+		}
+		command.Dir = absPath
+		out, err := command.Output()
+		if err != nil {
+			fmt.Println(err.Error())
+			return
+		}
+
+		resp := strings.Split(string(out), "@@@")
+		sendMessage(fmt.Sprintf(":shipit: Publish success! Click below to create a PR:\n\n %s", resp[1]), msg.Channel)
 	}
 }
