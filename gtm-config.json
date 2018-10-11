@@ -1,0 +1,1006 @@
+[
+    {
+        "trigger": [
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150030682",
+                "name": "Page View",
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/5",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/5?apiLink=trigger",
+                "triggerId": "5",
+                "type": "pageview",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "filter": [
+                    {
+                        "parameter": [
+                            {
+                                "key": "arg0",
+                                "type": "template",
+                                "value": "{{Click Element}}"
+                            },
+                            {
+                                "key": "arg1",
+                                "type": "template",
+                                "value": ".js_Filters .js_FilterOption *"
+                            }
+                        ],
+                        "type": "cssSelector"
+                    }
+                ],
+                "fingerprint": "1538150031295",
+                "name": "Filter Option Selected",
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/6",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/6?apiLink=trigger",
+                "triggerId": "6",
+                "type": "click",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "filter": [
+                    {
+                        "parameter": [
+                            {
+                                "key": "arg0",
+                                "type": "template",
+                                "value": "{{Click Element}}"
+                            },
+                            {
+                                "key": "arg1",
+                                "type": "template",
+                                "value": ".js_Pill"
+                            }
+                        ],
+                        "type": "cssSelector"
+                    }
+                ],
+                "fingerprint": "1538150031903",
+                "name": "Filter Toggle",
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/7",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/7?apiLink=trigger",
+                "triggerId": "7",
+                "type": "click",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "filter": [
+                    {
+                        "parameter": [
+                            {
+                                "key": "arg0",
+                                "type": "template",
+                                "value": "{{Click Element}}"
+                            },
+                            {
+                                "key": "arg1",
+                                "type": "template",
+                                "value": ".js_LoadMoreButton"
+                            }
+                        ],
+                        "type": "cssSelector"
+                    }
+                ],
+                "fingerprint": "1538150032474",
+                "name": "Load More Button",
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/8",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/8?apiLink=trigger",
+                "triggerId": "8",
+                "type": "click",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "filter": [
+                    {
+                        "parameter": [
+                            {
+                                "key": "arg0",
+                                "type": "template",
+                                "value": "{{Click Element}}"
+                            },
+                            {
+                                "key": "arg1",
+                                "type": "template",
+                                "value": ".js_PageNumber"
+                            }
+                        ],
+                        "type": "cssSelector"
+                    }
+                ],
+                "fingerprint": "1538150033108",
+                "name": "Pagination Click",
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/9",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/9?apiLink=trigger",
+                "triggerId": "9",
+                "type": "click",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "filter": [
+                    {
+                        "parameter": [
+                            {
+                                "key": "arg0",
+                                "type": "template",
+                                "value": "{{Click Element}}"
+                            },
+                            {
+                                "key": "arg1",
+                                "type": "template",
+                                "value": ".js_NavLink"
+                            }
+                        ],
+                        "type": "cssSelector"
+                    }
+                ],
+                "fingerprint": "1538150033723",
+                "name": "Sub Nav Link",
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/10",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/10?apiLink=trigger",
+                "triggerId": "10",
+                "type": "click",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "customEventFilter": [
+                    {
+                        "parameter": [
+                            {
+                                "key": "arg0",
+                                "type": "template",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "key": "arg1",
+                                "type": "template",
+                                "value": "syntheticPageView"
+                            }
+                        ],
+                        "type": "equals"
+                    }
+                ],
+                "fingerprint": "1538150034324",
+                "name": "Custom Event - Synthetic Page View",
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/11",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/11?apiLink=trigger",
+                "triggerId": "11",
+                "type": "customEvent",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "customEventFilter": [
+                    {
+                        "parameter": [
+                            {
+                                "key": "arg0",
+                                "type": "template",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "key": "arg1",
+                                "type": "template",
+                                "value": "inquiry form submitted"
+                            }
+                        ],
+                        "type": "equals"
+                    }
+                ],
+                "fingerprint": "1538150034941",
+                "name": "Custom Event - Inquiry Form Submitted",
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/12",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/12?apiLink=trigger",
+                "triggerId": "12",
+                "type": "customEvent",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "customEventFilter": [
+                    {
+                        "parameter": [
+                            {
+                                "key": "arg0",
+                                "type": "template",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "key": "arg1",
+                                "type": "template",
+                                "value": "inquiry form loaded"
+                            }
+                        ],
+                        "type": "equals"
+                    }
+                ],
+                "fingerprint": "1538150035569",
+                "name": "Custom Event - Inquiry Form Loaded",
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/13",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/13?apiLink=trigger",
+                "triggerId": "13",
+                "type": "customEvent",
+                "workspaceId": "18"
+            }
+        ]
+    },
+    {
+        "tag": [
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150036307",
+                "firingTriggerId": [
+                    "6"
+                ],
+                "name": "Filter Option Selected",
+                "parameter": [
+                    {
+                        "key": "overrideGaSettings",
+                        "type": "boolean",
+                        "value": "false"
+                    },
+                    {
+                        "key": "eventCategory",
+                        "type": "template",
+                        "value": "filter selected"
+                    },
+                    {
+                        "key": "trackType",
+                        "type": "template",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "key": "gaSettings",
+                        "type": "template",
+                        "value": "{{Google Analytics Settings}}"
+                    },
+                    {
+                        "key": "eventAction",
+                        "type": "template",
+                        "value": "{{Get Filter Name}}"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/1",
+                "tagId": "1",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/1?apiLink=tag",
+                "type": "ua",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150037093",
+                "firingTriggerId": [
+                    "7"
+                ],
+                "name": "Filter Toggle",
+                "parameter": [
+                    {
+                        "key": "overrideGaSettings",
+                        "type": "boolean",
+                        "value": "false"
+                    },
+                    {
+                        "key": "eventCategory",
+                        "type": "template",
+                        "value": "filter dropdown toggled"
+                    },
+                    {
+                        "key": "trackType",
+                        "type": "template",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "key": "gaSettings",
+                        "type": "template",
+                        "value": "{{Google Analytics Settings}}"
+                    },
+                    {
+                        "key": "eventAction",
+                        "type": "template",
+                        "value": "{{Lower Case Click Text}}"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/2",
+                "tagId": "2",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/2?apiLink=tag",
+                "type": "ua",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150037880",
+                "firingTriggerId": [
+                    "8"
+                ],
+                "name": "Load More Button",
+                "parameter": [
+                    {
+                        "key": "overrideGaSettings",
+                        "type": "boolean",
+                        "value": "false"
+                    },
+                    {
+                        "key": "eventCategory",
+                        "type": "template",
+                        "value": "load more"
+                    },
+                    {
+                        "key": "trackType",
+                        "type": "template",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "key": "gaSettings",
+                        "type": "template",
+                        "value": "{{Google Analytics Settings}}"
+                    },
+                    {
+                        "key": "eventAction",
+                        "type": "template",
+                        "value": "{{Page Path}}"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/3",
+                "tagId": "3",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/3?apiLink=tag",
+                "type": "ua",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150038681",
+                "firingTriggerId": [
+                    "5"
+                ],
+                "name": "Page View",
+                "parameter": [
+                    {
+                        "key": "overrideGaSettings",
+                        "type": "boolean",
+                        "value": "false"
+                    },
+                    {
+                        "key": "trackType",
+                        "type": "template",
+                        "value": "TRACK_PAGEVIEW"
+                    },
+                    {
+                        "key": "gaSettings",
+                        "type": "template",
+                        "value": "{{Google Analytics Settings}}"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/4",
+                "tagId": "4",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/4?apiLink=tag",
+                "type": "ua",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150039514",
+                "firingTriggerId": [
+                    "9"
+                ],
+                "name": "Pagination Click",
+                "parameter": [
+                    {
+                        "key": "overrideGaSettings",
+                        "type": "boolean",
+                        "value": "false"
+                    },
+                    {
+                        "key": "eventCategory",
+                        "type": "template",
+                        "value": "pagination click"
+                    },
+                    {
+                        "key": "trackType",
+                        "type": "template",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "key": "gaSettings",
+                        "type": "template",
+                        "value": "{{Google Analytics Settings}}"
+                    },
+                    {
+                        "key": "eventAction",
+                        "type": "template",
+                        "value": "{{Lower Case Click Text}}"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/5",
+                "tagId": "5",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/5?apiLink=tag",
+                "type": "ua",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150040301",
+                "firingTriggerId": [
+                    "10"
+                ],
+                "name": "Sub Nav Link",
+                "parameter": [
+                    {
+                        "key": "overrideGaSettings",
+                        "type": "boolean",
+                        "value": "false"
+                    },
+                    {
+                        "key": "eventCategory",
+                        "type": "template",
+                        "value": "sub nav click"
+                    },
+                    {
+                        "key": "trackType",
+                        "type": "template",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "key": "gaSettings",
+                        "type": "template",
+                        "value": "{{Google Analytics Settings}}"
+                    },
+                    {
+                        "key": "eventAction",
+                        "type": "template",
+                        "value": "{{Lower Case Click Text}}"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/6",
+                "tagId": "6",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/6?apiLink=tag",
+                "type": "ua",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150041140",
+                "firingTriggerId": [
+                    "13"
+                ],
+                "name": "Custom Event - Inquiry Form Loaded",
+                "parameter": [
+                    {
+                        "key": "overrideGaSettings",
+                        "type": "boolean",
+                        "value": "false"
+                    },
+                    {
+                        "key": "eventCategory",
+                        "type": "template",
+                        "value": "inquiry form"
+                    },
+                    {
+                        "key": "trackType",
+                        "type": "template",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "key": "gaSettings",
+                        "type": "template",
+                        "value": "{{Google Analytics Settings}}"
+                    },
+                    {
+                        "key": "eventAction",
+                        "type": "template",
+                        "value": "loaded"
+                    },
+                    {
+                        "key": "eventLabel",
+                        "type": "template",
+                        "value": "{{Data Layer - galleryId}} - {{Data Layer - inquiryType}}"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/7",
+                "tagId": "7",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/7?apiLink=tag",
+                "type": "ua",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150041908",
+                "firingTriggerId": [
+                    "12"
+                ],
+                "name": "Custom Event - Inquiry Form Submitted",
+                "parameter": [
+                    {
+                        "key": "overrideGaSettings",
+                        "type": "boolean",
+                        "value": "false"
+                    },
+                    {
+                        "key": "eventCategory",
+                        "type": "template",
+                        "value": "inquiry form"
+                    },
+                    {
+                        "key": "trackType",
+                        "type": "template",
+                        "value": "TRACK_EVENT"
+                    },
+                    {
+                        "key": "gaSettings",
+                        "type": "template",
+                        "value": "{{Google Analytics Settings}}"
+                    },
+                    {
+                        "key": "eventAction",
+                        "type": "template",
+                        "value": "successfully submitted"
+                    },
+                    {
+                        "key": "eventLabel",
+                        "type": "template",
+                        "value": "{{Data Layer - galleryId}} - {{Data Layer - inquiryType}}"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/8",
+                "tagId": "8",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/8?apiLink=tag",
+                "type": "ua",
+                "workspaceId": "18"
+            }
+        ]
+    },
+    {
+        "variable": [
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150021766",
+                "name": "Google Analytics Settings",
+                "parameter": [
+                    {
+                        "key": "cookieDomain",
+                        "type": "template",
+                        "value": "auto"
+                    },
+                    {
+                        "key": "dimension",
+                        "list": [
+                            {
+                                "map": [
+                                    {
+                                        "key": "index",
+                                        "type": "template",
+                                        "value": "1"
+                                    },
+                                    {
+                                        "key": "dimension",
+                                        "type": "template",
+                                        "value": "{{Data Layer - galleryId}}"
+                                    }
+                                ],
+                                "type": "map"
+                            },
+                            {
+                                "map": [
+                                    {
+                                        "key": "index",
+                                        "type": "template",
+                                        "value": "2"
+                                    },
+                                    {
+                                        "key": "dimension",
+                                        "type": "template",
+                                        "value": "{{Data Layer - gallerySection}}"
+                                    }
+                                ],
+                                "type": "map"
+                            },
+                            {
+                                "map": [
+                                    {
+                                        "key": "index",
+                                        "type": "template",
+                                        "value": "3"
+                                    },
+                                    {
+                                        "key": "dimension",
+                                        "type": "template",
+                                        "value": "{{Data Layer - galleryItemId}}"
+                                    }
+                                ],
+                                "type": "map"
+                            },
+                            {
+                                "map": [
+                                    {
+                                        "key": "index",
+                                        "type": "template",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "dimension",
+                                        "type": "template",
+                                        "value": "{{Data Layer - artistId}}"
+                                    }
+                                ],
+                                "type": "map"
+                            },
+                            {
+                                "map": [
+                                    {
+                                        "key": "index",
+                                        "type": "template",
+                                        "value": "5"
+                                    },
+                                    {
+                                        "key": "dimension",
+                                        "type": "template",
+                                        "value": "{{Data Layer - userAgent}}"
+                                    }
+                                ],
+                                "type": "map"
+                            }
+                        ],
+                        "type": "list"
+                    },
+                    {
+                        "key": "trackingId",
+                        "type": "template",
+                        "value": "{{Lookup - GA ID by Environment}}"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/1",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/1?apiLink=variable",
+                "type": "gas",
+                "variableId": "1",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150022398",
+                "name": "Lookup - GA ID by Environment",
+                "parameter": [
+                    {
+                        "key": "setDefaultValue",
+                        "type": "boolean",
+                        "value": "true"
+                    },
+                    {
+                        "key": "input",
+                        "type": "template",
+                        "value": "{{Environment Name}}"
+                    },
+                    {
+                        "key": "defaultValue",
+                        "type": "template",
+                        "value": "{{GA ID - Development}}"
+                    },
+                    {
+                        "key": "map",
+                        "list": [
+                            {
+                                "map": [
+                                    {
+                                        "key": "key",
+                                        "type": "template",
+                                        "value": "Staging"
+                                    },
+                                    {
+                                        "key": "value",
+                                        "type": "template",
+                                        "value": "{{GA ID - Staging}}"
+                                    }
+                                ],
+                                "type": "map"
+                            },
+                            {
+                                "map": [
+                                    {
+                                        "key": "key",
+                                        "type": "template",
+                                        "value": "Live"
+                                    },
+                                    {
+                                        "key": "value",
+                                        "type": "template",
+                                        "value": "{{GA ID - Production}}"
+                                    }
+                                ],
+                                "type": "map"
+                            },
+                            {
+                                "map": [
+                                    {
+                                        "key": "key",
+                                        "type": "template",
+                                        "value": "Dev"
+                                    },
+                                    {
+                                        "key": "value",
+                                        "type": "template",
+                                        "value": "{{GA ID - Development}}"
+                                    }
+                                ],
+                                "type": "map"
+                            }
+                        ],
+                        "type": "list"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/2",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/2?apiLink=variable",
+                "type": "smm",
+                "variableId": "2",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150023031",
+                "name": "GA ID - Development",
+                "parameter": [
+                    {
+                        "key": "value",
+                        "type": "template",
+                        "value": "UA-SOME_REAL_ID-1"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/3",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/3?apiLink=variable",
+                "type": "c",
+                "variableId": "3",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150023686",
+                "name": "GA ID - Staging",
+                "parameter": [
+                    {
+                        "key": "value",
+                        "type": "template",
+                        "value": "UA-XXXXXXXX-2"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/4",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/4?apiLink=variable",
+                "type": "c",
+                "variableId": "4",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150024270",
+                "name": "GA ID - Production",
+                "parameter": [
+                    {
+                        "key": "value",
+                        "type": "template",
+                        "value": "UA-XXXXXXXX-3"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/5",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/5?apiLink=variable",
+                "type": "c",
+                "variableId": "5",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150024830",
+                "name": "Get Filter Name",
+                "parameter": [
+                    {
+                        "key": "javascript",
+                        "type": "template",
+                        "value": "function() {\n\tvar parent = {{Find Closest}}({{Click Element}}, '.js_FilterOption')\n    var filterLabel = parent.getElementsByTagName('span')[0]\n    if (filterLabel) {\n\t\treturn filterLabel.innerText.toLowerCase()      \n    }\n\treturn ''\n}"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/6",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/6?apiLink=variable",
+                "type": "jsm",
+                "variableId": "6",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150025531",
+                "name": "Find Closest",
+                "parameter": [
+                    {
+                        "key": "javascript",
+                        "type": "template",
+                        "value": "function() {\n  return function(target, selector) {\n    while (!target.matches(selector) \u0026\u0026 !target.matches('body')) {\n      target = target.parentElement;\n    }\n    return target.matches(selector) ? target : undefined;\n  }\n}"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/7",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/7?apiLink=variable",
+                "type": "jsm",
+                "variableId": "7",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150026253",
+                "name": "Lower Case Click Text",
+                "parameter": [
+                    {
+                        "key": "javascript",
+                        "type": "template",
+                        "value": "function() {\n  return {{Click Text}}.toLowerCase();\n}\n\n"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/8",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/8?apiLink=variable",
+                "type": "jsm",
+                "variableId": "8",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150026878",
+                "name": "Data Layer - artistId",
+                "parameter": [
+                    {
+                        "key": "dataLayerVersion",
+                        "type": "integer",
+                        "value": "2"
+                    },
+                    {
+                        "key": "name",
+                        "type": "template",
+                        "value": "artistId"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/9",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/9?apiLink=variable",
+                "type": "v",
+                "variableId": "9",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150027477",
+                "name": "Data Layer - galleryId",
+                "parameter": [
+                    {
+                        "key": "dataLayerVersion",
+                        "type": "integer",
+                        "value": "2"
+                    },
+                    {
+                        "key": "name",
+                        "type": "template",
+                        "value": "galleryId"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/10",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/10?apiLink=variable",
+                "type": "v",
+                "variableId": "10",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150028101",
+                "name": "Data Layer - galleryItemId",
+                "parameter": [
+                    {
+                        "key": "dataLayerVersion",
+                        "type": "integer",
+                        "value": "2"
+                    },
+                    {
+                        "key": "name",
+                        "type": "template",
+                        "value": "galleryItemId"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/11",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/11?apiLink=variable",
+                "type": "v",
+                "variableId": "11",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150028792",
+                "name": "Data Layer - gallerySection",
+                "parameter": [
+                    {
+                        "key": "dataLayerVersion",
+                        "type": "integer",
+                        "value": "2"
+                    },
+                    {
+                        "key": "name",
+                        "type": "template",
+                        "value": "gallerySection"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/12",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/12?apiLink=variable",
+                "type": "v",
+                "variableId": "12",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150029421",
+                "name": "Data Layer - inquiryType",
+                "parameter": [
+                    {
+                        "key": "dataLayerVersion",
+                        "type": "integer",
+                        "value": "2"
+                    },
+                    {
+                        "key": "name",
+                        "type": "template",
+                        "value": "inquiryType"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/13",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/13?apiLink=variable",
+                "type": "v",
+                "variableId": "13",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1538150030104",
+                "name": "Data Layer - userAgent",
+                "parameter": [
+                    {
+                        "key": "dataLayerVersion",
+                        "type": "integer",
+                        "value": "2"
+                    },
+                    {
+                        "key": "name",
+                        "type": "template",
+                        "value": "userAgent"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/14",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/14?apiLink=variable",
+                "type": "v",
+                "variableId": "14",
+                "workspaceId": "18"
+            }
+        ]
+    }
+]
