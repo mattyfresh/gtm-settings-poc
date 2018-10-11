@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"go-bot/services"
@@ -15,6 +16,7 @@ import (
 var realTimeMessenger *slack.RTM
 var gtmService *gtm.Service
 
+// convenience shorthand for sending a slack msg
 func sendMessage(msg string, channelID string) {
 	realTimeMessenger.SendMessage(realTimeMessenger.NewOutgoingMessage(msg, channelID))
 }
@@ -65,38 +67,7 @@ func getDefaultWorkspaceID(containerPath string) (string, error) {
 	return defaultWorkspaceID, nil
 }
 
-func validateVariable(variable *gtm.Variable) (errors []error) {
-	// data layer vars
-	dataLayerPrefix := "Data Layer - "
-	if variable.Type == "v" && !strings.HasPrefix(variable.Name, dataLayerPrefix) {
-		errMsg := fmt.Errorf("_Variable `%s` failed validation, all Data Layer variables must start with the prefix: `%s`_", variable.Name, dataLayerPrefix)
-		errors = append(errors, errMsg)
-	}
-
-	return errors
-}
-
-func validateTag(tag *gtm.Tag) (errors []error) {
-	// @TODO
-	return errors
-}
-
-func validateTrigger(trigger *gtm.Trigger) (errors []error) {
-	// custom events
-	customEventPrefix := "Custom Event -"
-	if trigger.Type == "customEvent" && !strings.HasPrefix(trigger.Name, customEventPrefix) {
-		errMsg := fmt.Errorf("_Trigger `%s` failed validation, all Custom Event variables must start with the prefix: `%s`_", trigger.Name, customEventPrefix)
-		errors = append(errors, errMsg)
-	}
-	return errors
-}
-
-// GtmHandler controller for all GTM related events
-func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
-	// expose this globally to the module so we don't have to pass it around as an arg
-	realTimeMessenger = rtm
-
-	// get args for gtm command
+func parseCommand(msg *slack.MessageEvent) (commandType, commandName string) {
 	pattern := regexp.MustCompile(`gtm\s+(?P<command_type>\w*)\s+(?P<container_name>\S*)`)
 	match := pattern.FindStringSubmatch(msg.Text)
 	if match == nil {
@@ -113,15 +84,22 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 		captures[name] = match[i]
 	}
 
-	commandType, _ := captures["command_type"]
-	containerName, _ := captures["container_name"]
+	return captures["command_type"], captures["container_name"]
+}
 
+// GtmHandler controller for all GTM related events
+func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
+	// expose rtm as a singleton
+	realTimeMessenger = rtm
+
+	// parse the slack command
+	commandType, containerName := parseCommand(msg)
 	if !(commandType == "publish" || commandType == "validate") {
 		sendMessage("There are two commands available, `publish` and `validate`.", msg.Channel)
 		return
 	}
 
-	// make the GTM api service available
+	// initialize GTM api service
 	if initErr := gtmInit(); initErr != nil {
 		fmt.Printf("Error initializing GTM api: %s", initErr.Error())
 		return
@@ -149,7 +127,7 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	}
 
 	// let the user know we're validating
-	wipMsg := fmt.Sprintf("validating container with ID %s and workspace #%s :ram:", containerID, workspaceID)
+	wipMsg := fmt.Sprintf(":ram: validating workspace #%s for container with ID %s", workspaceID, containerID)
 	sendMessage(wipMsg, msg.Channel)
 
 	var validationErrors []string
@@ -206,12 +184,30 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 		return
 	}
 
-	sendMessage(":shipit: Validation Succeeded!", msg.Channel)
+	sendMessage(":thumbsup: Validation Succeeded!", msg.Channel)
 
-	// @TODO
 	if commandType == "publish" {
 		// write current GTM state to file
-		sendMessage(":shipit: Publishing...", msg.Channel)
+		sendMessage(":shipit: Publishing New GTM Config to GitHub", msg.Channel)
+
+		allOutput := make([]interface{}, 3)
+		allOutput[0] = allTriggers
+		allOutput[1] = allTags
+		allOutput[2] = allVars
+
+		file, err := os.Create("gtm-config.json")
+		if err != nil {
+			fmt.Println(err.Error())
+			return
+		}
+		defer file.Close()
+
+		outputJSON, jsonErr := json.MarshalIndent(allOutput, "", "    ")
+		if jsonErr != nil {
+			fmt.Println(jsonErr.Error())
+			return
+		}
+		fmt.Fprint(file, string(outputJSON))
 
 		// create PR in GitHub
 		// @TODO
