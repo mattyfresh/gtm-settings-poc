@@ -109,6 +109,11 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	}
 
 	accountID := os.Getenv("GTM_ACCOUNT_ID")
+	if accountID == "" {
+		sendMessage("The GTM_ACCOUNT_ID has not been set, please contact a developer...", msg.Channel)
+		return
+	}
+
 	accountPath := "accounts/" + accountID
 
 	var containerID string
@@ -144,7 +149,7 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	}
 
 	for _, v := range allVars.Variable {
-		if errors := validateVariable(v); errors != nil {
+		if errors := ValidateVariable(v); errors != nil {
 			for _, e := range errors {
 				validationErrors = append(validationErrors, e.Error())
 			}
@@ -159,7 +164,7 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	}
 
 	for _, t := range allTags.Tag {
-		if errors := validateTag(t); errors != nil {
+		if errors := ValidateTag(t); errors != nil {
 			for _, e := range errors {
 				validationErrors = append(validationErrors, e.Error())
 			}
@@ -174,7 +179,7 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	}
 
 	for _, t := range allTriggers.Trigger {
-		if errors := validateTrigger(t); errors != nil {
+		if errors := ValidateTrigger(t); errors != nil {
 			for _, e := range errors {
 				validationErrors = append(validationErrors, e.Error())
 			}

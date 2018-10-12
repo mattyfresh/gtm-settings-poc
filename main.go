@@ -67,7 +67,7 @@ func main() {
 	for msg := range rtm.IncomingEvents {
 		switch slackEvent := msg.Data.(type) {
 		// case *slack.HelloEvent:
-		// fmt.Println("HELLO!")
+		// fmt.Println("Hello Event")
 		case *slack.ConnectedEvent:
 			fmt.Println("Connected to slack: ", slackEvent.Info)
 
@@ -75,7 +75,6 @@ func main() {
 			info := rtm.GetInfo()
 			gtmPrefix := fmt.Sprintf("<@%s> gtm", info.User.ID)
 
-			// @TODO parse request for GTM and build API calls
 			if slackEvent.User != info.User.ID && strings.HasPrefix(slackEvent.Text, gtmPrefix) {
 				controllers.GtmHandler(slackEvent, rtm)
 				break
