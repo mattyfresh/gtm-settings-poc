@@ -110,7 +110,7 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 
 	accountID := os.Getenv("GTM_ACCOUNT_ID")
 	if accountID == "" {
-		sendMessage("The GTM_ACCOUNT_ID has not been set, please contact a developer...", msg.Channel)
+		sendMessage(":x: The `GTM_ACCOUNT_ID` has not been set, please contact tech support", msg.Channel)
 		return
 	}
 
