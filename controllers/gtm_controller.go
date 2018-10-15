@@ -195,12 +195,8 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	sendMessage(":thumbsup: Validation Succeeded!", msg.Channel)
 
 	if commandType == "publish" {
-		// write current GTM state to file
-		allOutput := make([]interface{}, 3)
-		allOutput[0] = allTriggers
-		allOutput[1] = allTags
-		allOutput[2] = allVars
-
+		// build and write JSON to file
+		allOutput := []interface{}{allTriggers, allTags, allVars}
 		file, err := os.Create("gtm-config.json")
 		if err != nil {
 			fmt.Println(err.Error())
@@ -215,7 +211,7 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 		}
 		fmt.Fprint(file, string(outputJSON))
 
-		// create PR in GitHub
+		// create and push a commit with new GTM config file to github
 		branchName := fmt.Sprintf("workspace-%s-%d", workspaceID, time.Now().Unix())
 		command := exec.Command("/bin/bash", "github-commit.sh", branchName)
 		absPath, absPathErr := filepath.Abs(".")
@@ -224,12 +220,13 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 			return
 		}
 		command.Dir = absPath
+
+		// get output from bash script
 		out, err := command.Output()
 		if err != nil {
 			fmt.Println(err.Error())
 			return
 		}
-
 		pullRequestLink := strings.Split(string(out), "@@@")[1]
 		sendMessage(fmt.Sprintf(":shipit: Publish success! Click below to create a PR:\n\n %s", pullRequestLink), msg.Channel)
 	}

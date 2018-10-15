@@ -23,7 +23,7 @@ git add gtm-config.json
 git commit -m "update to gtm config via Slack"
 
 # Push quietly to prevent showing the token in log
-git push -q https://${GITHUB_PERSONAL_ACCESS_TOKEN}@github.com/mattyfresh/gtm-settings-poc.git $BRANCH_NAME
+git push -q https://${GITHUB_ACCESS_TOKEN}@github.com/mattyfresh/gtm-settings-poc.git $BRANCH_NAME
 
 # Echo out link to create new PR
 # @NB '@@@' is for easy text parsing for output in Slack
