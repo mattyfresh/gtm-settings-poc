@@ -10,7 +10,7 @@ A Slack bot for Chat Ops
   - e.g. `https://tagmanager.google.com/?authuser=0#/container/accounts/${GTM_ACCOUNT_ID}/containers/${CONTAINER_ID}/workspaces/${WORKSPACE_ID}`
 - `SLACK_BOT_API_TOKEN`: an access token that allows your bot to communicate with our slack instance via the API
   - follow the _Getting Started_ section here: https://api.slack.com/bot-users
-- `GITHUB_ACCESS_TOKEN`: used to create and push commits to a github repo with the GTM configuration. @TODO migrate to use token for the `artnetworldwide` github account.
+- `GITHUB_ACCESS_TOKEN`: used to create and push commits to a github repo with the GTM configuration.
   - see https://github.com/settings/tokens
 
 # Getting Started
