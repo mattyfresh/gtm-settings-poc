@@ -26,3 +26,11 @@ _@NB this is a WIP, currently points to a public repository just as a POC. If yo
 
 - `@bot gtm validate ${name_of_container}` will pull the latest workspace, run it against our validation spec (@TODO this is just hard-coded into the app for now), and print out any possible errors.
 - `@bot gtm publish ${name_of_container}` will run all of the `gtm validate` commands, plus run a bash script to pull down the GTM config repo, add your changes, and push a new branch to that repo with the proposed changes. @TODO this is just hard-coded into `github-commit.sh` right now, these should come from the env somehow.
+
+# Docker
+
+1. ensure all ENV variables are set
+1. copy the contents of the file path that the `GOOGLE_APPLICATION_CREDENTIALS` env var points to and add it to a file called `google-creds.json` in the project root.
+1. run `docker build -t some/alias .` to build a docker container with the tag `some/alias` (eg `mpadich/gobot`)
+1. edit the `run.sh` to reflect the tag name you chose for your docker container.
+1. run `./run.sh` to run your docker container.

@@ -1,0 +1,7 @@
+.git
+.gitignore
+
+README.md
+
+/gtm-settings-poc
+gtm-config.json

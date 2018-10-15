@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"go-bot/controllers"
 	"log"
 	"os"
 	"strings"
@@ -76,7 +75,7 @@ func main() {
 			gtmPrefix := fmt.Sprintf("<@%s> gtm", info.User.ID)
 
 			if slackEvent.User != info.User.ID && strings.HasPrefix(slackEvent.Text, gtmPrefix) {
-				controllers.GtmHandler(slackEvent, rtm)
+				GtmHandler(slackEvent, rtm)
 				break
 			}
 
