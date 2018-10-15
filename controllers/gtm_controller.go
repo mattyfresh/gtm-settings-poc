@@ -71,16 +71,15 @@ func getDefaultWorkspaceID(containerPath string) (string, error) {
 }
 
 func parseCommand(msg *slack.MessageEvent) (commandType, commandName string) {
-	pattern := regexp.MustCompile(`gtm\s+(?P<command_type>\w*)\s+(?P<container_name>\S*)`)
+	pattern := regexp.MustCompile(`gtm\s+(?P<command_type>\w*)\s+(?P<container_name>\S*)?`)
 	match := pattern.FindStringSubmatch(msg.Text)
 	if match == nil {
-		sendMessage("gtm requests must be in format `gtm <name_of_command> <container_name>`", msg.Channel)
 		return
 	}
 
 	captures := make(map[string]string)
 	for i, name := range pattern.SubexpNames() {
-		// Ignore the whole regexp match and unnamed groups
+		// ignore the whole regexp match and unnamed groups
 		if i == 0 || name == "" {
 			continue
 		}
@@ -98,13 +97,7 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	// parse the slack command
 	commandType, containerName := parseCommand(msg)
 	if !(commandType == "publish" || commandType == "validate") {
-		sendMessage("There are two commands available, `publish` and `validate`.", msg.Channel)
-		return
-	}
-
-	// initialize GTM api service
-	if initErr := gtmInit(); initErr != nil {
-		fmt.Printf("Error initializing GTM api: %s", initErr.Error())
+		sendMessage("There are two commands available, `publish` and `validate`. For example, '@' the bot and try `gtm validate ${name_of_container}`", msg.Channel)
 		return
 	}
 
@@ -114,7 +107,13 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 		return
 	}
 
-	accountPath := "accounts/" + accountID
+	// initialize GTM api service
+	if initErr := gtmInit(); initErr != nil {
+		fmt.Printf("Error initializing GTM api: %s", initErr.Error())
+		return
+	}
+
+	accountPath := fmt.Sprintf("accounts/%s", accountID)
 
 	var containerID string
 	cID, err := getContainerByName(accountPath, containerName)
