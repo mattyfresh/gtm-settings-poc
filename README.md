@@ -22,7 +22,7 @@ A Slack bot for Chat Ops
 
 # Google Tag Manager Commands
 
-_@NB this is a WIP, currently points to a public repository just as a POC. If you want this to work for you, you need to generate a `GITHUB_ACCESS_TOKEN` and change the `REPO_URL` this scripts references_
+_@NB this is a WIP, currently points to a public repository just as a POC. If you want this to work for you, you need to generate a `GITHUB_ACCESS_TOKEN` and change the `GTM_CONFIG_REPO_URL` this scripts references_
 
 - `@bot gtm validate ${name_of_container}` will pull the latest workspace, run it against our validation spec (@TODO this is just hard-coded into the app for now), and print out any possible errors.
 - `@bot gtm publish ${name_of_container}` will run all of the `gtm validate` commands, plus run a bash script to pull down the GTM config repo, add your changes, and push a new branch to that repo with the proposed changes. @TODO this is just hard-coded into `github-commit.sh` right now, these should come from the env somehow.

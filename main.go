@@ -65,10 +65,12 @@ func main() {
 
 	for msg := range rtm.IncomingEvents {
 		switch slackEvent := msg.Data.(type) {
+
 		// case *slack.HelloEvent:
 		// fmt.Println("Hello Event")
+
 		case *slack.ConnectedEvent:
-			fmt.Println("Connected to slack: ", slackEvent.Info)
+			fmt.Println("Connected to slack team: ", slackEvent.Info.Team.Name)
 
 		case *slack.MessageEvent:
 			info := rtm.GetInfo()
