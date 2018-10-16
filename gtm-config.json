@@ -235,6 +235,34 @@
                 "triggerId": "13",
                 "type": "customEvent",
                 "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "customEventFilter": [
+                    {
+                        "parameter": [
+                            {
+                                "key": "arg0",
+                                "type": "template",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "key": "arg1",
+                                "type": "template",
+                                "value": "Custom Event - bar"
+                            }
+                        ],
+                        "type": "equals"
+                    }
+                ],
+                "fingerprint": "1539358148169",
+                "name": "Custom Event - bar",
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/19",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/19?apiLink=trigger",
+                "triggerId": "19",
+                "type": "customEvent",
+                "workspaceId": "18"
             }
         ]
     },
@@ -284,12 +312,17 @@
             {
                 "accountId": "4134047533",
                 "containerId": "10046994",
-                "fingerprint": "1538150037093",
+                "fingerprint": "1539719517884",
                 "firingTriggerId": [
                     "7"
                 ],
                 "name": "Filter Toggle",
                 "parameter": [
+                    {
+                        "key": "nonInteraction",
+                        "type": "boolean",
+                        "value": "false"
+                    },
                     {
                         "key": "overrideGaSettings",
                         "type": "boolean",
@@ -298,7 +331,7 @@
                     {
                         "key": "eventCategory",
                         "type": "template",
-                        "value": "filter dropdown toggled"
+                        "value": "updated filter toggle"
                     },
                     {
                         "key": "trackType",
@@ -999,6 +1032,34 @@
                 "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/14?apiLink=variable",
                 "type": "v",
                 "variableId": "14",
+                "workspaceId": "18"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1539286243426",
+                "name": "Data Layer - foo",
+                "parameter": [
+                    {
+                        "key": "dataLayerVersion",
+                        "type": "integer",
+                        "value": "2"
+                    },
+                    {
+                        "key": "setDefaultValue",
+                        "type": "boolean",
+                        "value": "false"
+                    },
+                    {
+                        "key": "name",
+                        "type": "template",
+                        "value": "Data Layer - foo"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/16",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/16?apiLink=variable",
+                "type": "v",
+                "variableId": "16",
                 "workspaceId": "18"
             }
         ]
