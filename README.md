@@ -17,7 +17,7 @@ A Slack bot for Chat Ops
 
 1. Set up your bot using the instructions at https://api.slack.com/bot-users and set the `SLACK_BOT_API_TOKEN` once your bot user is created. Remember to invite your bot to whichever channel you would like it to be active in. There is a Slack shortcut for inviting members: `/invite @user_name`.
 1. ensure you are in the project root, then run the bot: `go run main.go`.
-1. Give it a go! For example, if you named your both `gobot`: type `@gobot hello` into Slack. You should get a response back.
+1. Give it a go! For example, if you named your bot `gobot`: type `@gobot hello` into Slack. You should get a response back.
 1. Congrats! You are up and running.
 
 # Google Tag Manager Commands
