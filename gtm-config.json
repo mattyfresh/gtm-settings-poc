@@ -6,11 +6,11 @@
                 "containerId": "10046994",
                 "fingerprint": "1538150030682",
                 "name": "Page View",
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/5",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/5?apiLink=trigger",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/triggers/5",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/triggers/5?apiLink=trigger",
                 "triggerId": "5",
                 "type": "pageview",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -34,11 +34,11 @@
                 ],
                 "fingerprint": "1538150031295",
                 "name": "Filter Option Selected",
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/6",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/6?apiLink=trigger",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/triggers/6",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/triggers/6?apiLink=trigger",
                 "triggerId": "6",
                 "type": "click",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -62,11 +62,11 @@
                 ],
                 "fingerprint": "1538150031903",
                 "name": "Filter Toggle",
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/7",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/7?apiLink=trigger",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/triggers/7",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/triggers/7?apiLink=trigger",
                 "triggerId": "7",
                 "type": "click",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -90,11 +90,11 @@
                 ],
                 "fingerprint": "1538150032474",
                 "name": "Load More Button",
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/8",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/8?apiLink=trigger",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/triggers/8",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/triggers/8?apiLink=trigger",
                 "triggerId": "8",
                 "type": "click",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -118,11 +118,11 @@
                 ],
                 "fingerprint": "1538150033108",
                 "name": "Pagination Click",
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/9",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/9?apiLink=trigger",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/triggers/9",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/triggers/9?apiLink=trigger",
                 "triggerId": "9",
                 "type": "click",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -146,11 +146,11 @@
                 ],
                 "fingerprint": "1538150033723",
                 "name": "Sub Nav Link",
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/10",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/10?apiLink=trigger",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/triggers/10",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/triggers/10?apiLink=trigger",
                 "triggerId": "10",
                 "type": "click",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -174,11 +174,11 @@
                 ],
                 "fingerprint": "1538150034324",
                 "name": "Custom Event - Synthetic Page View",
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/11",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/11?apiLink=trigger",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/triggers/11",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/triggers/11?apiLink=trigger",
                 "triggerId": "11",
                 "type": "customEvent",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -202,11 +202,11 @@
                 ],
                 "fingerprint": "1538150034941",
                 "name": "Custom Event - Inquiry Form Submitted",
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/12",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/12?apiLink=trigger",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/triggers/12",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/triggers/12?apiLink=trigger",
                 "triggerId": "12",
                 "type": "customEvent",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -230,11 +230,39 @@
                 ],
                 "fingerprint": "1538150035569",
                 "name": "Custom Event - Inquiry Form Loaded",
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/triggers/13",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/triggers/13?apiLink=trigger",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/triggers/13",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/triggers/13?apiLink=trigger",
                 "triggerId": "13",
                 "type": "customEvent",
-                "workspaceId": "18"
+                "workspaceId": "29"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "customEventFilter": [
+                    {
+                        "parameter": [
+                            {
+                                "key": "arg0",
+                                "type": "template",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "key": "arg1",
+                                "type": "template",
+                                "value": "Custom Event - bar"
+                            }
+                        ],
+                        "type": "equals"
+                    }
+                ],
+                "fingerprint": "1539358148169",
+                "name": "Custom Event - bar",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/triggers/19",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/triggers/19?apiLink=trigger",
+                "triggerId": "19",
+                "type": "customEvent",
+                "workspaceId": "29"
             }
         ]
     },
@@ -275,21 +303,26 @@
                         "value": "{{Get Filter Name}}"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/1",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/tags/1",
                 "tagId": "1",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/1?apiLink=tag",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/tags/1?apiLink=tag",
                 "type": "ua",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
                 "containerId": "10046994",
-                "fingerprint": "1538150037093",
+                "fingerprint": "1539719517884",
                 "firingTriggerId": [
                     "7"
                 ],
                 "name": "Filter Toggle",
                 "parameter": [
+                    {
+                        "key": "nonInteraction",
+                        "type": "boolean",
+                        "value": "false"
+                    },
                     {
                         "key": "overrideGaSettings",
                         "type": "boolean",
@@ -298,7 +331,7 @@
                     {
                         "key": "eventCategory",
                         "type": "template",
-                        "value": "filter dropdown toggled"
+                        "value": "updated filter toggle"
                     },
                     {
                         "key": "trackType",
@@ -316,11 +349,11 @@
                         "value": "{{Lower Case Click Text}}"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/2",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/tags/2",
                 "tagId": "2",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/2?apiLink=tag",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/tags/2?apiLink=tag",
                 "type": "ua",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -357,11 +390,11 @@
                         "value": "{{Page Path}}"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/3",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/tags/3",
                 "tagId": "3",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/3?apiLink=tag",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/tags/3?apiLink=tag",
                 "type": "ua",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -388,11 +421,11 @@
                         "value": "{{Google Analytics Settings}}"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/4",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/tags/4",
                 "tagId": "4",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/4?apiLink=tag",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/tags/4?apiLink=tag",
                 "type": "ua",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -429,11 +462,11 @@
                         "value": "{{Lower Case Click Text}}"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/5",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/tags/5",
                 "tagId": "5",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/5?apiLink=tag",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/tags/5?apiLink=tag",
                 "type": "ua",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -470,11 +503,11 @@
                         "value": "{{Lower Case Click Text}}"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/6",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/tags/6",
                 "tagId": "6",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/6?apiLink=tag",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/tags/6?apiLink=tag",
                 "type": "ua",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -516,11 +549,11 @@
                         "value": "{{Data Layer - galleryId}} - {{Data Layer - inquiryType}}"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/7",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/tags/7",
                 "tagId": "7",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/7?apiLink=tag",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/tags/7?apiLink=tag",
                 "type": "ua",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -562,11 +595,11 @@
                         "value": "{{Data Layer - galleryId}} - {{Data Layer - inquiryType}}"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/tags/8",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/tags/8",
                 "tagId": "8",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/tags/8?apiLink=tag",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/tags/8?apiLink=tag",
                 "type": "ua",
-                "workspaceId": "18"
+                "workspaceId": "29"
             }
         ]
     },
@@ -670,11 +703,11 @@
                         "value": "{{Lookup - GA ID by Environment}}"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/1",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/1?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/1",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/1?apiLink=variable",
                 "type": "gas",
                 "variableId": "1",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -749,11 +782,11 @@
                         "type": "list"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/2",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/2?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/2",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/2?apiLink=variable",
                 "type": "smm",
                 "variableId": "2",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -767,11 +800,11 @@
                         "value": "UA-SOME_REAL_ID-1"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/3",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/3?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/3",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/3?apiLink=variable",
                 "type": "c",
                 "variableId": "3",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -785,11 +818,11 @@
                         "value": "UA-XXXXXXXX-2"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/4",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/4?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/4",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/4?apiLink=variable",
                 "type": "c",
                 "variableId": "4",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -803,11 +836,11 @@
                         "value": "UA-XXXXXXXX-3"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/5",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/5?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/5",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/5?apiLink=variable",
                 "type": "c",
                 "variableId": "5",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -821,11 +854,11 @@
                         "value": "function() {\n\tvar parent = {{Find Closest}}({{Click Element}}, '.js_FilterOption')\n    var filterLabel = parent.getElementsByTagName('span')[0]\n    if (filterLabel) {\n\t\treturn filterLabel.innerText.toLowerCase()      \n    }\n\treturn ''\n}"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/6",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/6?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/6",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/6?apiLink=variable",
                 "type": "jsm",
                 "variableId": "6",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -839,11 +872,11 @@
                         "value": "function() {\n  return function(target, selector) {\n    while (!target.matches(selector) \u0026\u0026 !target.matches('body')) {\n      target = target.parentElement;\n    }\n    return target.matches(selector) ? target : undefined;\n  }\n}"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/7",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/7?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/7",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/7?apiLink=variable",
                 "type": "jsm",
                 "variableId": "7",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -857,11 +890,11 @@
                         "value": "function() {\n  return {{Click Text}}.toLowerCase();\n}\n\n"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/8",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/8?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/8",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/8?apiLink=variable",
                 "type": "jsm",
                 "variableId": "8",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -880,11 +913,11 @@
                         "value": "artistId"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/9",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/9?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/9",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/9?apiLink=variable",
                 "type": "v",
                 "variableId": "9",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -903,11 +936,11 @@
                         "value": "galleryId"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/10",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/10?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/10",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/10?apiLink=variable",
                 "type": "v",
                 "variableId": "10",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -926,11 +959,11 @@
                         "value": "galleryItemId"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/11",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/11?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/11",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/11?apiLink=variable",
                 "type": "v",
                 "variableId": "11",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -949,11 +982,11 @@
                         "value": "gallerySection"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/12",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/12?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/12",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/12?apiLink=variable",
                 "type": "v",
                 "variableId": "12",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -972,11 +1005,11 @@
                         "value": "inquiryType"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/13",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/13?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/13",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/13?apiLink=variable",
                 "type": "v",
                 "variableId": "13",
-                "workspaceId": "18"
+                "workspaceId": "29"
             },
             {
                 "accountId": "4134047533",
@@ -995,11 +1028,39 @@
                         "value": "userAgent"
                     }
                 ],
-                "path": "accounts/4134047533/containers/10046994/workspaces/18/variables/14",
-                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/18/variables/14?apiLink=variable",
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/14",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/14?apiLink=variable",
                 "type": "v",
                 "variableId": "14",
-                "workspaceId": "18"
+                "workspaceId": "29"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "fingerprint": "1539286243426",
+                "name": "Data Layer - foo",
+                "parameter": [
+                    {
+                        "key": "dataLayerVersion",
+                        "type": "integer",
+                        "value": "2"
+                    },
+                    {
+                        "key": "setDefaultValue",
+                        "type": "boolean",
+                        "value": "false"
+                    },
+                    {
+                        "key": "name",
+                        "type": "template",
+                        "value": "Data Layer - foo"
+                    }
+                ],
+                "path": "accounts/4134047533/containers/10046994/workspaces/29/variables/16",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/29/variables/16?apiLink=variable",
+                "type": "v",
+                "variableId": "16",
+                "workspaceId": "29"
             }
         ]
     }
