@@ -25,10 +25,6 @@ jobs:
             DOCKER_IMAGE_FULL_NAME="$DOCKER_REGISTRY/$CIRCLE_PROJECT_REPONAME:$VERSION_NO"
             echo "$DOCKER_IMAGE_FULL_NAME" > docker_image_full_name.txt
             docker build -t $DOCKER_IMAGE_FULL_NAME .
-      - persist_to_workspace:
-          root: .
-          paths:
-            - docker_image_full_name.txt
       - run:
           name: publish gobot docker container
           command: |
