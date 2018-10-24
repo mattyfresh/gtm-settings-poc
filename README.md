@@ -30,7 +30,6 @@ _@NB this is a WIP, currently points to a public repository just as a POC. If yo
 # Docker
 
 1. ensure all ENV variables are set
-1. copy the contents of the file path that the `GOOGLE_APPLICATION_CREDENTIALS` env var points to and add it to a file called `google-creds.json` in the project root.
-1. run `docker build -t some/alias .` to build a docker container with the tag `some/alias` (eg `mpadich/gobot`)
-1. edit the `run.sh` to reflect the tag name you chose for your docker container.
-1. run `./run.sh` to run your docker container.
+1. copy the contents of the file path that the `GOOGLE_APPLICATION_CREDENTIALS` ENV var points to and add it to a file called `google-creds.json` in the project root.
+1. run `./bin/build.sh` to build a docker container with the tag `artnet/gobot`
+1. run `./bin/run.sh` to run your docker container.

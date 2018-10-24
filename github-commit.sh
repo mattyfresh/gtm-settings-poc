@@ -10,13 +10,10 @@ git config --global credential.helper "cache --timeout=120"
 git config --global user.email "matthew.padich@gmail.com"
 git config --global user.name "Slack Bot!"
 
-# Reset
 rm -rf gtm-settings-poc
 
-# Clone Repo
+# Clone config repo and copy new config into it
 git clone "$GTM_CONFIG_REPO_URL.git"
-
-# Copy Config File to repo
 cp gtm-config.json ./gtm-settings-poc/gtm-config.json
 
 # cd into config repo, commit and push
