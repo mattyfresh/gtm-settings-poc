@@ -1,0 +1,55 @@
+version: 2
+jobs:
+  publish_and_run_bot:
+    working_directory: /go/src/github.com/artnetworldwide/automation-chatops-bot
+    docker:
+      - image: circleci/golang:1.11.1
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: install dependencies
+          command: |
+            go get -u golang.org/x/oauth2/google
+            go get -u google.golang.org/api/tagmanager/v2
+            go get -u github.com/nlopes/slack
+      - run:
+          name: setup gtm service account JSON file
+          command: |
+            echo $GTM_SERVICE_ACCOUNT_CREDS > ./application_default_credentials.json
+      - run:
+          name: build gobot docker container
+          command: |
+            VERSION_NO=$(cat ./version.txt)
+            DOCKER_IMAGE_FULL_NAME="$DOCKER_REGISTRY/$CIRCLE_PROJECT_REPONAME:$VERSION_NO"
+            echo "$DOCKER_IMAGE_FULL_NAME" > docker_image_full_name.txt
+            docker build -t $DOCKER_IMAGE_FULL_NAME .
+      - persist_to_workspace:
+          root: .
+          paths:
+            - docker_image_full_name.txt
+      - run:
+          name: publish gobot docker container
+          command: |
+            docker login "$DOCKER_REGISTRY" -u "$DOCKER_USER_RW" -p "$DOCKER_PASSWORD_RW"
+            docker push $(cat ./docker_image_full_name.txt)
+      - run:
+          name: run gobot docker container
+          command: |
+            docker run -e SLACK_BOT_API_TOKEN=$SLACK_BOT_API_TOKEN \
+                -e GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN \
+                -e GTM_ACCOUNT_ID=$GTM_ACCOUNT_ID \
+                -e GOOGLE_APPLICATION_CREDENTIALS="application_default_credentials.json" \
+                $(cat ./docker_image_full_name.txt)
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - publish_and_run_bot:
+          filters:
+            branches:
+              only:
+                # - master
+                - /.*/ # for testing purposes run this on all branches
