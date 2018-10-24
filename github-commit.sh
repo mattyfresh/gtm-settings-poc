@@ -23,7 +23,7 @@ cp gtm-config.json ./gtm-settings-poc/gtm-config.json
 cd gtm-settings-poc/
 git checkout -b $BRANCH_NAME
 git add gtm-config.json
-git commit -m "update to gtm config via Slack on $(date)"
+git commit -m "update GTM config via Slack on $(date)"
 
 # Push quietly to prevent showing the token in log
 git push -q https://${GITHUB_ACCESS_TOKEN}@github.com/mattyfresh/gtm-settings-poc.git $BRANCH_NAME

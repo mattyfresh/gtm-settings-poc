@@ -210,7 +210,7 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 		fmt.Fprint(file, string(outputJSON))
 
 		// create and push a commit with new GTM config file to github
-		branchName := fmt.Sprintf("workspace-%s-%d", workspaceID, time.Now().Unix())
+		branchName := fmt.Sprintf("%s-%s-%d", containerName, workspaceID, time.Now().Unix())
 		command := exec.Command("/bin/bash", "github-commit.sh", branchName)
 		absPath, absPathErr := filepath.Abs(".")
 		if absPathErr != nil {
