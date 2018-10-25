@@ -28,10 +28,6 @@ jobs:
                 --build-arg GTM_ACCOUNT_ID=$GTM_ACCOUNT_ID \
                 --build-arg GOOGLE_APPLICATION_CREDENTIALS="gtm_service_account_credentials.json" \
                 -t $DOCKER_IMAGE_FULL_NAME .
-      - persist_to_workspace:
-          root: .
-          paths:
-            - version.txt
       - run:
           name: set up cicd tools
           command: |
