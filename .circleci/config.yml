@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  publish_bot:
+  build_and_publish_bot:
     working_directory: /go/src/github.com/artnetworldwide/automation-chatops-bot
     docker:
       - image: circleci/golang:1.11.1
@@ -23,7 +23,6 @@ jobs:
           command: |
             VERSION_NO=$(cat ./version.txt)
             DOCKER_IMAGE_FULL_NAME="$DOCKER_REGISTRY/$CIRCLE_PROJECT_REPONAME:$VERSION_NO"
-            echo "$DOCKER_IMAGE_FULL_NAME" > docker_image_full_name.txt
             docker build --build-arg SLACK_BOT_API_TOKEN=$SLACK_BOT_API_TOKEN \
                 --build-arg GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN \
                 --build-arg GTM_ACCOUNT_ID=$GTM_ACCOUNT_ID \
@@ -32,37 +31,37 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - docker_image_full_name.txt
             - version.txt
       - run:
-          name: publish gobot docker container
+          name: set up cicd tools
           command: |
-            docker login "$DOCKER_REGISTRY" -u "$DOCKER_USER_RW" -p "$DOCKER_PASSWORD_RW"
-            docker push $(cat ./docker_image_full_name.txt)
-
-    deploy_bot:
-      working_directory: /go/src/github.com/artnetworldwide/automation-chatops-bot
-      docker:
-        - image: microsoft/azure-cli
-      steps:
-        - attach_workspace:
-            at: /go/src/github.com/artnetworldwide/automation-chatops-bot
-        - run:
-            name: deploy GoBot to Azure Container Instances
-            command: .circleci/helpers/deploy_bot.sh
+            mkdir -p ~/bin/cicd-tools
+            git clone git@github.com:artnetworldwide/cicd-tools.git ~/bin/cicd-tools
+            cd ~/bin/cicd-tools # this doesn't affect other run steps
+            git checkout v2.5.5
+            CICD_TOOLS_VERSION=$(git describe --always)
+            echo "cicd-tools have been set up in $(pwd)"
+            echo "Version of cicd-tools: ${CICD_TOOLS_VERSION}"
+            ls -alF ~/bin/cicd-tools
+      - run:
+          name: publish docker image
+          command: |
+            DOCKER_REGISTRY=$DOCKER_REGISTRY \
+            DOCKER_REGISTRY_USER=$DOCKER_USER_RW \
+            DOCKER_REGISTRY_PASSWORD=$DOCKER_PASSWORD_RW \
+            PROJECT_NAME=$CIRCLE_PROJECT_REPONAME \
+            PROJECT_VERSION_NO=$(cat version.txt) \
+            PROJECT_BRANCH=$CIRCLE_BRANCH \
+            ~/bin/cicd-tools/publish_docker_image.sh
 
 workflows:
   version: 2
   workflow:
     jobs:
-      - publish_bot:
+      - build_and_publish_bot:
           context: org-global-v2
           filters:
             branches:
               only:
                 # - master
                 - /.*/ # for testing purposes run this on all branches
-      - deploy_bot:
-          context: org-global-v2
-          requires:
-            - publish_bot
