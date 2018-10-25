@@ -23,6 +23,8 @@ jobs:
           command: |
             VERSION_NO=$(cat ./version.txt)
             DOCKER_IMAGE_FULL_NAME="$DOCKER_REGISTRY/$CIRCLE_PROJECT_REPONAME:$VERSION_NO"
+            echo "TEST GTM ACCOUNT ID is $GTM_ACCOUNT_ID"
+            cat ./gtm_service_account_credentials.json
             docker build --build-arg SLACK_BOT_API_TOKEN=$SLACK_BOT_API_TOKEN \
                 --build-arg GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN \
                 --build-arg GTM_ACCOUNT_ID=$GTM_ACCOUNT_ID \
