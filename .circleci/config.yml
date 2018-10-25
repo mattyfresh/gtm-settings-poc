@@ -5,9 +5,9 @@ jobs:
     docker:
       - image: circleci/golang:1.11.1
     steps:
-      - checkout
       - setup_remote_docker:
           docker_layer_caching: true
+      - checkout
       - run:
           name: install dependencies
           command: |
