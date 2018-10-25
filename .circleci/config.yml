@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  publish_and_run_bot:
+  publish_bot:
     working_directory: /go/src/github.com/artnetworldwide/automation-chatops-bot
     docker:
       - image: circleci/golang:1.11.1
@@ -15,37 +15,54 @@ jobs:
             go get -u google.golang.org/api/tagmanager/v2
             go get -u github.com/nlopes/slack
       - run:
-          name: setup gtm service account JSON file
+          name: set up gtm service account credentials
           command: |
-            echo $GTM_SERVICE_ACCOUNT_CREDS > ./application_default_credentials.json
+            echo $GTM_SERVICE_ACCOUNT_CREDENTIALS > ./gtm_service_account_credentials.json
       - run:
           name: build gobot docker container
           command: |
             VERSION_NO=$(cat ./version.txt)
             DOCKER_IMAGE_FULL_NAME="$DOCKER_REGISTRY/$CIRCLE_PROJECT_REPONAME:$VERSION_NO"
             echo "$DOCKER_IMAGE_FULL_NAME" > docker_image_full_name.txt
-            docker build -t $DOCKER_IMAGE_FULL_NAME .
+            docker build --build-arg SLACK_BOT_API_TOKEN=$SLACK_BOT_API_TOKEN \
+                --build-arg GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN \
+                --build-arg GTM_ACCOUNT_ID=$GTM_ACCOUNT_ID \
+                --build-arg GOOGLE_APPLICATION_CREDENTIALS="gtm_service_account_credentials.json" \
+                -t $DOCKER_IMAGE_FULL_NAME .
+      - persist_to_workspace:
+          root: .
+          paths:
+            - docker_image_full_name.txt
+            - version.txt
       - run:
           name: publish gobot docker container
           command: |
             docker login "$DOCKER_REGISTRY" -u "$DOCKER_USER_RW" -p "$DOCKER_PASSWORD_RW"
             docker push $(cat ./docker_image_full_name.txt)
-      - run:
-          name: run gobot docker container
-          command: |
-            docker run -e SLACK_BOT_API_TOKEN=$SLACK_BOT_API_TOKEN \
-                -e GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN \
-                -e GTM_ACCOUNT_ID=$GTM_ACCOUNT_ID \
-                -e GOOGLE_APPLICATION_CREDENTIALS="application_default_credentials.json" \
-                $(cat ./docker_image_full_name.txt)
+
+    deploy_bot:
+      working_directory: /go/src/github.com/artnetworldwide/automation-chatops-bot
+      docker:
+        - image: microsoft/azure-cli
+      steps:
+        - attach_workspace:
+            at: /go/src/github.com/artnetworldwide/automation-chatops-bot
+        - run:
+            name: deploy GoBot to Azure Container Instances
+            command: .circleci/helpers/deploy_bot.sh
 
 workflows:
   version: 2
   workflow:
     jobs:
-      - publish_and_run_bot:
+      - publish_bot:
+          context: org-global-v2
           filters:
             branches:
               only:
                 # - master
                 - /.*/ # for testing purposes run this on all branches
+      - deploy_bot:
+          context: org-global-v2
+          requires:
+            - publish_bot
