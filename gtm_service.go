@@ -26,7 +26,6 @@ func ConfigureGTMService() (*gtm.Service, error) {
 	// create HTTP client and add the correct scope/permissions
 	client, createClientErr := createHTTPClient(
 		gtm.TagmanagerEditContainersScope,
-		gtm.TagmanagerDeleteContainersScope,
 		gtm.TagmanagerEditContainerversionsScope,
 		gtm.TagmanagerPublishScope,
 	)
