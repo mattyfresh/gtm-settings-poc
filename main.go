@@ -66,31 +66,23 @@ func main() {
 	for msg := range rtm.IncomingEvents {
 		switch slackEvent := msg.Data.(type) {
 
-		// case *slack.HelloEvent:
-		// fmt.Println("Hello Event")
-
 		case *slack.ConnectedEvent:
 			fmt.Println("Connected to slack team: ", slackEvent.Info.Team.Name)
 
 		case *slack.MessageEvent:
 			info := rtm.GetInfo()
-			gtmPrefix := fmt.Sprintf("<@%s> gtm", info.User.ID)
+			botUserID := info.User.ID
 
-			if slackEvent.User != info.User.ID && strings.HasPrefix(slackEvent.Text, gtmPrefix) {
+			gtmPrefix := fmt.Sprintf("<@%s> gtm", botUserID)
+			if slackEvent.User != botUserID && strings.HasPrefix(slackEvent.Text, gtmPrefix) {
 				GtmHandler(slackEvent, rtm)
 				break
 			}
 
 			// fallback to generic responses
-			if slackEvent.User != info.User.ID && strings.HasPrefix(slackEvent.Text, fmt.Sprintf("<@%s> ", info.User.ID)) {
-				genericResponse(rtm, slackEvent, fmt.Sprintf("<@%s> ", info.User.ID))
+			if slackEvent.User != botUserID && strings.HasPrefix(slackEvent.Text, fmt.Sprintf("<@%s> ", botUserID)) {
+				genericResponse(rtm, slackEvent, fmt.Sprintf("<@%s> ", botUserID))
 			}
-
-		// case *slack.PresenceChangeEvent:
-		// 	fmt.Printf("Presence Change: %v\n", slackEvent)
-
-		// case *slack.LatencyReport:
-		// 	fmt.Printf("Current latency: %v\n", slackEvent.Value)
 
 		case *slack.RTMError:
 			fmt.Printf("Error: %s\n", slackEvent.Error())

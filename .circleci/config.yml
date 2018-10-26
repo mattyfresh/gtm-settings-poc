@@ -34,7 +34,6 @@ jobs:
           command: |
             VERSION_NO=$(cat ./version.txt)
             DOCKER_IMAGE_FULL_NAME="$DOCKER_REGISTRY/$CIRCLE_PROJECT_REPONAME:$VERSION_NO"
-            cat gtm_service_account_credentials.json
             if [ ! -s "gtm_service_account_credentials.json" ]; then
               echo "gtm_service_account_credentials.json must exist and not be empty, breaking the build"
               exit 1

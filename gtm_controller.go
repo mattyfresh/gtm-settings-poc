@@ -18,82 +18,11 @@ import (
 var realTimeMessenger *slack.RTM
 var gtmService *gtm.Service
 
-// convenience shorthand for sending a slack msg
-func sendMessage(msg string, channelID string) {
-	realTimeMessenger.SendMessage(realTimeMessenger.NewOutgoingMessage(msg, channelID))
-}
-
-func gtmInit() error {
-	if gtmService == nil {
-		s, err := ConfigureGTMService()
-		if err != nil {
-			return err
-		}
-		gtmService = s
-	}
-	return nil
-}
-
-func getContainerByName(accountPath string, containerName string) (string, error) {
-	containers, err := gtmService.Accounts.Containers.List(accountPath).Do()
-	if err != nil {
-		return "", err
-	}
-
-	var containerID string
-	for _, c := range containers.Container {
-		if c.Name == containerName {
-			containerID = c.ContainerId
-			break
-		}
-	}
-	return containerID, nil
-}
-
-func getDefaultWorkspaceID(containerPath string) (string, error) {
-	workspaceResp, workspaceErr := gtmService.Accounts.Containers.Workspaces.List(containerPath).Do()
-	if workspaceErr != nil {
-		return "", workspaceErr
-	}
-	defaultWorkspaceName := "Default Workspace"
-	var defaultWorkspaceID string
-	for _, ws := range workspaceResp.Workspace {
-		if ws.Name == defaultWorkspaceName {
-			defaultWorkspaceID = ws.WorkspaceId
-			break
-		}
-	}
-	if defaultWorkspaceID == "" {
-		return "", errors.New("Workspace ID for '" + defaultWorkspaceName + "' could not be found")
-	}
-	return defaultWorkspaceID, nil
-}
-
-func parseCommand(msg *slack.MessageEvent) (commandType, commandName string) {
-	pattern := regexp.MustCompile(`gtm\s+(?P<command_type>\w*)\s+(?P<container_name>\S*)?`)
-	match := pattern.FindStringSubmatch(msg.Text)
-	if match == nil {
-		return
-	}
-
-	captures := make(map[string]string)
-	for i, name := range pattern.SubexpNames() {
-		// ignore the whole regexp match and unnamed groups
-		if i == 0 || name == "" {
-			continue
-		}
-		captures[name] = match[i]
-	}
-
-	return captures["command_type"], captures["container_name"]
-}
-
 // GtmHandler controller for all GTM related events
 func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	// expose rtm as a singleton
 	realTimeMessenger = rtm
 
-	// parse the slack command
 	commandType, containerName := parseCommand(msg)
 	if !(commandType == "publish" || commandType == "validate") {
 		sendMessage("There are two commands available, `publish` and `validate`. For example, '@' the bot and try `gtm validate ${name_of_container}`", msg.Channel)
@@ -228,4 +157,74 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 		pullRequestLink := strings.Split(string(out), "@@@")[1]
 		sendMessage(fmt.Sprintf(":shipit: Publish success! Click below to create a PR:\n\n %s", pullRequestLink), msg.Channel)
 	}
+}
+
+// convenience shorthand for sending a slack msg
+func sendMessage(msg string, channelID string) {
+	realTimeMessenger.SendMessage(realTimeMessenger.NewOutgoingMessage(msg, channelID))
+}
+
+func gtmInit() error {
+	if gtmService == nil {
+		s, err := ConfigureGTMService()
+		if err != nil {
+			return err
+		}
+		gtmService = s
+	}
+	return nil
+}
+
+func getContainerByName(accountPath string, containerName string) (string, error) {
+	containers, err := gtmService.Accounts.Containers.List(accountPath).Do()
+	if err != nil {
+		return "", err
+	}
+
+	var containerID string
+	for _, c := range containers.Container {
+		if c.Name == containerName {
+			containerID = c.ContainerId
+			break
+		}
+	}
+	return containerID, nil
+}
+
+func getDefaultWorkspaceID(containerPath string) (string, error) {
+	workspaceResp, workspaceErr := gtmService.Accounts.Containers.Workspaces.List(containerPath).Do()
+	if workspaceErr != nil {
+		return "", workspaceErr
+	}
+	defaultWorkspaceName := "Default Workspace"
+	var defaultWorkspaceID string
+	for _, ws := range workspaceResp.Workspace {
+		if ws.Name == defaultWorkspaceName {
+			defaultWorkspaceID = ws.WorkspaceId
+			break
+		}
+	}
+	if defaultWorkspaceID == "" {
+		return "", errors.New("Workspace ID for '" + defaultWorkspaceName + "' could not be found")
+	}
+	return defaultWorkspaceID, nil
+}
+
+func parseCommand(msg *slack.MessageEvent) (commandType, commandName string) {
+	pattern := regexp.MustCompile(`gtm\s+(?P<command_type>\w*)\s+(?P<container_name>\S*)?`)
+	match := pattern.FindStringSubmatch(msg.Text)
+	if match == nil {
+		return
+	}
+
+	captures := make(map[string]string)
+	for i, name := range pattern.SubexpNames() {
+		// ignore the whole regexp match and unnamed groups
+		if i == 0 || name == "" {
+			continue
+		}
+		captures[name] = match[i]
+	}
+
+	return captures["command_type"], captures["container_name"]
 }
