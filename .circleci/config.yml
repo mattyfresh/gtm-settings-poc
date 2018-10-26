@@ -15,22 +15,6 @@ jobs:
             go get -u google.golang.org/api/tagmanager/v2
             go get -u github.com/nlopes/slack
       - run:
-          name: set up gtm service account credentials
-          command: |
-            echo $GTM_SERVICE_ACCOUNT_CREDENTIALS > ./gtm_service_account_credentials.json
-      - run:
-          name: build gobot docker container
-          command: |
-            VERSION_NO=$(cat ./version.txt)
-            DOCKER_IMAGE_FULL_NAME="$DOCKER_REGISTRY/$CIRCLE_PROJECT_REPONAME:$VERSION_NO"
-            echo "TEST GTM ACCOUNT ID is $GTM_ACCOUNT_ID"
-            cat ./gtm_service_account_credentials.json
-            docker build --build-arg SLACK_BOT_API_TOKEN=$SLACK_BOT_API_TOKEN \
-                --build-arg GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN \
-                --build-arg GTM_ACCOUNT_ID=$GTM_ACCOUNT_ID \
-                --build-arg GOOGLE_APPLICATION_CREDENTIALS="gtm_service_account_credentials.json" \
-                -t $DOCKER_IMAGE_FULL_NAME .
-      - run:
           name: set up cicd tools
           command: |
             mkdir -p ~/bin/cicd-tools
@@ -41,6 +25,25 @@ jobs:
             echo "cicd-tools have been set up in $(pwd)"
             echo "Version of cicd-tools: ${CICD_TOOLS_VERSION}"
             ls -alF ~/bin/cicd-tools
+      - run:
+          name: set up gtm service account credentials
+          command: |
+            echo $GTM_SERVICE_ACCOUNT_CREDENTIALS > "gtm_service_account_credentials.json"
+      - run:
+          name: build docker container
+          command: |
+            VERSION_NO=$(cat ./version.txt)
+            DOCKER_IMAGE_FULL_NAME="$DOCKER_REGISTRY/$CIRCLE_PROJECT_REPONAME:$VERSION_NO"
+            cat gtm_service_account_credentials.json
+            if [ ! -s "gtm_service_account_credentials.json" ]; then
+              echo "gtm_service_account_credentials.json must exist and not be empty, breaking the build"
+              exit 1
+            fi
+            docker build --build-arg SLACK_BOT_API_TOKEN=$SLACK_BOT_API_TOKEN \
+                --build-arg GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN \
+                --build-arg GTM_ACCOUNT_ID=$GTM_ACCOUNT_ID \
+                --build-arg GOOGLE_APPLICATION_CREDENTIALS="gtm_service_account_credentials.json" \
+                -t $DOCKER_IMAGE_FULL_NAME .
       - run:
           name: publish docker image
           command: |
