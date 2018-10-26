@@ -46,8 +46,7 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	var containerID string
 	cID, err := getContainerByName(accountPath, containerName)
 	if err != nil {
-		noValidContainerMsg := fmt.Sprintf(":crying_cat_face: No valid container with name `%s` found... double check the name of your container!", containerName)
-		sendMessage(noValidContainerMsg, msg.Channel)
+		sendMessage(err.Error(), msg.Channel)
 		return
 	}
 	containerID = cID
@@ -188,6 +187,11 @@ func getContainerByName(accountPath string, containerName string) (string, error
 			break
 		}
 	}
+
+	if containerID == "" {
+		return "", fmt.Errorf(":crying_cat_face: Could not find a container with name `%s`! Please double check that a container with that name exists", containerName)
+	}
+
 	return containerID, nil
 }
 
