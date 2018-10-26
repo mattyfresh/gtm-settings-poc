@@ -235,6 +235,34 @@
                 "triggerId": "13",
                 "type": "customEvent",
                 "workspaceId": "30"
+            },
+            {
+                "accountId": "4134047533",
+                "containerId": "10046994",
+                "customEventFilter": [
+                    {
+                        "parameter": [
+                            {
+                                "key": "arg0",
+                                "type": "template",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "key": "arg1",
+                                "type": "template",
+                                "value": "Custom Event - new trigger"
+                            }
+                        ],
+                        "type": "equals"
+                    }
+                ],
+                "fingerprint": "1540583661900",
+                "name": "Custom Event - new trigger",
+                "path": "accounts/4134047533/containers/10046994/workspaces/30/triggers/31",
+                "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4134047533/containers/10046994/workspaces/30/triggers/31?apiLink=trigger",
+                "triggerId": "31",
+                "type": "customEvent",
+                "workspaceId": "30"
             }
         ]
     },
