@@ -44,8 +44,7 @@ func enforceSelectors(trigger *gtm.Trigger) error {
 					selectors := strings.Split(cssSelector, " ")
 					for _, selector := range selectors {
 
-						// allow all ``.js_SomeClass` and `*` CSS class names
-						// @TODO we may need to add a few more options for child selectors
+						// if any selector does not have the prefix `.js_` or aren't `*`, flag an error and bail
 						if !strings.HasPrefix(selector, jsPrefix) && selector != "*" {
 							hasFormattingError = true
 							break
