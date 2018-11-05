@@ -12,7 +12,11 @@ import (
 func customEvents(trigger *gtm.Trigger) error {
 	customEventPrefix := "Custom Event - "
 	if trigger.Type == "customEvent" && !strings.HasPrefix(trigger.Name, customEventPrefix) {
-		errMsg := fmt.Sprintf("Trigger `%s` failed validation, all Custom Event trigger names must start with the prefix: `%s`", trigger.Name, customEventPrefix)
+		errMsg := fmt.Sprintf(
+			"Trigger `%s` failed validation, all Custom Event trigger names must start with the prefix: `%s`",
+			trigger.Name,
+			customEventPrefix,
+		)
 		return validationError(errMsg)
 	}
 	return nil
@@ -52,7 +56,8 @@ func enforceSelectors(trigger *gtm.Trigger) error {
 					}
 
 					if hasFormattingError {
-						errMsg := fmt.Sprintf("Trigger `%s` failed validation, Make sure your css selectors begin with `%s`. Right now they look like: `%s`",
+						errMsg := fmt.Sprintf(
+							"Trigger `%s` failed validation, Make sure your css selectors begin with `%s`. Right now they look like: `%s`",
 							trigger.Name,
 							jsPrefix,
 							cssSelector,
@@ -88,7 +93,11 @@ func ValidateTrigger(trigger *gtm.Trigger) (errors []error) {
 func dataLayerVariables(variable *gtm.Variable) error {
 	dataLayerPrefix := "Data Layer - "
 	if variable.Type == "v" && !strings.HasPrefix(variable.Name, dataLayerPrefix) {
-		errMsg := fmt.Sprintf("Variable `%s` failed validation, all Data Layer variables must start with the prefix: `%s`", variable.Name, dataLayerPrefix)
+		errMsg := fmt.Sprintf(
+			"Variable `%s` failed validation, all Data Layer variables must start with the prefix: `%s`",
+			variable.Name,
+			dataLayerPrefix,
+		)
 		return validationError(errMsg)
 	}
 	return nil
