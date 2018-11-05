@@ -36,8 +36,8 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	}
 
 	// initialize GTM api service
-	if initErr := gtmInit(); initErr != nil {
-		fmt.Printf("Error initializing GTM api: %s", initErr.Error())
+	if err := gtmInit(); err != nil {
+		fmt.Printf("Error initializing GTM api: %s", err.Error())
 		return
 	}
 
@@ -54,9 +54,9 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	containerPath := fmt.Sprintf("accounts/%s/containers/%s", accountID, containerID)
 
 	// get current active workspace
-	workspaceID, workspaceErr := getDefaultWorkspaceID(containerPath)
-	if workspaceErr != nil {
-		sendMessage("There was an error getting the default workspace ID: "+workspaceErr.Error(), msg.Channel)
+	workspaceID, err := getDefaultWorkspaceID(containerPath)
+	if err != nil {
+		sendMessage("There was an error getting the default workspace ID: "+err.Error(), msg.Channel)
 		return
 	}
 
@@ -68,9 +68,9 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	workspacePath := fmt.Sprintf("%s/workspaces/%s", containerPath, workspaceID)
 
 	// validate variables
-	allVars, allVarsErr := gtmService.Accounts.Containers.Workspaces.Variables.List(workspacePath).Do()
-	if allVarsErr != nil {
-		fmt.Printf(allVarsErr.Error())
+	allVars, err := gtmService.Accounts.Containers.Workspaces.Variables.List(workspacePath).Do()
+	if err != nil {
+		fmt.Printf(err.Error())
 		return
 	}
 
@@ -83,9 +83,9 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	}
 
 	// validate tags
-	allTags, tagsErr := gtmService.Accounts.Containers.Workspaces.Tags.List(workspacePath).Do()
-	if tagsErr != nil {
-		fmt.Printf(tagsErr.Error())
+	allTags, err := gtmService.Accounts.Containers.Workspaces.Tags.List(workspacePath).Do()
+	if err != nil {
+		fmt.Printf(err.Error())
 		return
 	}
 
@@ -98,9 +98,9 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	}
 
 	// validate triggers
-	allTriggers, triggersErr := gtmService.Accounts.Containers.Workspaces.Triggers.List(workspacePath).Do()
-	if triggersErr != nil {
-		fmt.Printf(triggersErr.Error())
+	allTriggers, err := gtmService.Accounts.Containers.Workspaces.Triggers.List(workspacePath).Do()
+	if err != nil {
+		fmt.Printf(err.Error())
 		return
 	}
 
@@ -123,6 +123,7 @@ func GtmHandler(msg *slack.MessageEvent, rtm *slack.RTM) {
 	if commandType == "publish" {
 		// build and write JSON to file
 		allOutput := []interface{}{allTriggers, allTags, allVars}
+
 		file, err := os.Create("gtm-config.json")
 		if err != nil {
 			fmt.Println(err.Error())

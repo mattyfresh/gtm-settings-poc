@@ -16,7 +16,7 @@ A Slack bot for Chat Ops
 ## Getting Started
 
 1. Set up your bot using the instructions at https://api.slack.com/bot-users and set the `SLACK_BOT_API_TOKEN` once your bot user is created. Remember to invite your bot to whichever channel you would like it to be active in. There is a Slack shortcut for inviting members: `/invite @user_name`.
-1. ensure you are in the project root, then run the bot: `go run main.go`.
+1. ensure you are in the project root, then run the bot using `bin/local-run.sh`
 1. Give it a go! For example, if you named your bot `gobot`: type `@gobot hello` into Slack. You should get a response back.
 1. Congrats! You are up and running.
 
@@ -31,5 +31,5 @@ _@NB this is a WIP, currently points to a public repository just as a POC. If yo
 
 1. ensure all ENV variables are set
 1. copy the contents of the file path that the `GOOGLE_APPLICATION_CREDENTIALS` ENV var points to and add it to a file called `google-creds.json` in the project root.
-1. run `./bin/local-build.sh` to build a docker container with the tag `artnet/gobot`
-1. run `./bin/local-run.sh` to run your docker container.
+1. run `./bin/docker-build.sh` to build a docker container with the tag `artnet/gobot`
+1. run `./bin/docker-run.sh` to run your docker container.

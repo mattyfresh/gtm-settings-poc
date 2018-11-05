@@ -20,6 +20,10 @@ var triggerValidators = []func(trigger *gtm.Trigger) error{customEvents}
 
 // ValidateTrigger takes a gtm trigger and runs all of the relevant validation functions
 func ValidateTrigger(trigger *gtm.Trigger) (errors []error) {
+	trigger.Path = ""
+	trigger.Fingerprint = ""
+	trigger.TagManagerUrl = ""
+	trigger.WorkspaceId = ""
 	for _, f := range triggerValidators {
 		err := f(trigger)
 		if err != nil {
@@ -42,6 +46,10 @@ var variableValidators = []func(variable *gtm.Variable) error{dataLayerVariables
 
 // ValidateVariable takes a gtm variable and runs all of the relevant validation functions
 func ValidateVariable(variable *gtm.Variable) (errors []error) {
+	variable.Path = ""
+	variable.Fingerprint = ""
+	variable.TagManagerUrl = ""
+	variable.WorkspaceId = ""
 	for _, f := range variableValidators {
 		err := f(variable)
 		if err != nil {
@@ -71,6 +79,10 @@ var tagValidators = []func(variable *gtm.Tag) error{lowerCaseEventCategory}
 
 // ValidateTag takes a gtm tag and runs all of the relevant validation functions
 func ValidateTag(tag *gtm.Tag) (errors []error) {
+	tag.Path = ""
+	tag.Fingerprint = ""
+	tag.TagManagerUrl = ""
+	tag.WorkspaceId = ""
 	for _, f := range tagValidators {
 		err := f(tag)
 		if err != nil {
