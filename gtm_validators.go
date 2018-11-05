@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"reflect"
 	"strings"
 
 	gtm "google.golang.org/api/tagmanager/v2"
@@ -64,16 +65,37 @@ func ValidateVariable(variable *gtm.Variable) (errors []error) {
 }
 
 func lowerCaseEventCategory(tag *gtm.Tag) error {
-	eventCategory := ""
+	rawEventMap := make(map[string]string)
 	for _, param := range tag.Parameter {
+		// ignore properties that have GTM built in variables,
+		// these can be uppercase and are not editable :/
+		if strings.Contains(param.Value, "{{") {
+			continue
+		}
+
+		if param.Key == "eventAction" {
+			rawEventMap["action"] = param.Value
+		}
 		if param.Key == "eventCategory" {
-			eventCategory = param.Value
-			break
+			rawEventMap["category"] = param.Value
+		}
+		if param.Key == "eventLabel" {
+			rawEventMap["label"] = param.Value
 		}
 	}
-	lowerCaseCategory := strings.ToLower(eventCategory)
-	if lowerCaseCategory != eventCategory {
-		errMsg := fmt.Sprintf("Tag `%s` failed validation, category `%s` must be all lower case.  It should probably be: `%s`", tag.Name, eventCategory, lowerCaseCategory)
+
+	lowerCaseMap := make(map[string]string)
+	for key, val := range rawEventMap {
+		lowerCaseMap[key] = strings.ToLower(val)
+	}
+
+	if !reflect.DeepEqual(rawEventMap, lowerCaseMap) {
+		errMsg := fmt.Sprintf(
+			"Tag `%s` failed validation, ensure all of these values are lower case! `%v`.  It should probably be: `%v`",
+			tag.Name,
+			rawEventMap,
+			lowerCaseMap,
+		)
 		return validationError(errMsg)
 	}
 	return nil
