@@ -8,9 +8,9 @@ import (
 )
 
 func customEvents(trigger *gtm.Trigger) error {
-	customEventPrefix := "Custom Event -"
+	customEventPrefix := "Custom Event - "
 	if trigger.Type == "customEvent" && !strings.HasPrefix(trigger.Name, customEventPrefix) {
-		errMsg := fmt.Sprintf("Trigger `%s` failed validation, all Custom Event variables must start with the prefix: `%s`", trigger.Name, customEventPrefix)
+		errMsg := fmt.Sprintf("Trigger `%s` failed validation, all Custom Event trigger names must start with the prefix: `%s`", trigger.Name, customEventPrefix)
 		return validationError(errMsg)
 	}
 	return nil
@@ -20,10 +20,12 @@ var triggerValidators = []func(trigger *gtm.Trigger) error{customEvents}
 
 // ValidateTrigger takes a gtm trigger and runs all of the relevant validation functions
 func ValidateTrigger(trigger *gtm.Trigger) (errors []error) {
+	// remove fields we don't care about diffing
 	trigger.Path = ""
 	trigger.Fingerprint = ""
 	trigger.TagManagerUrl = ""
 	trigger.WorkspaceId = ""
+
 	for _, f := range triggerValidators {
 		err := f(trigger)
 		if err != nil {
@@ -46,10 +48,12 @@ var variableValidators = []func(variable *gtm.Variable) error{dataLayerVariables
 
 // ValidateVariable takes a gtm variable and runs all of the relevant validation functions
 func ValidateVariable(variable *gtm.Variable) (errors []error) {
+	// remove fields we don't care about diffing
 	variable.Path = ""
 	variable.Fingerprint = ""
 	variable.TagManagerUrl = ""
 	variable.WorkspaceId = ""
+
 	for _, f := range variableValidators {
 		err := f(variable)
 		if err != nil {
@@ -75,14 +79,16 @@ func lowerCaseEventCategory(tag *gtm.Tag) error {
 	return nil
 }
 
-var tagValidators = []func(variable *gtm.Tag) error{lowerCaseEventCategory}
+var tagValidators = []func(tag *gtm.Tag) error{lowerCaseEventCategory}
 
 // ValidateTag takes a gtm tag and runs all of the relevant validation functions
 func ValidateTag(tag *gtm.Tag) (errors []error) {
+	// remove fields we don't care about diffing
 	tag.Path = ""
 	tag.Fingerprint = ""
 	tag.TagManagerUrl = ""
 	tag.WorkspaceId = ""
+
 	for _, f := range tagValidators {
 		err := f(tag)
 		if err != nil {
