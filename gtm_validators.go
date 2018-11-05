@@ -8,6 +8,7 @@ import (
 	gtm "google.golang.org/api/tagmanager/v2"
 )
 
+// ensure custom events always have the proper prefix
 func customEvents(trigger *gtm.Trigger) error {
 	customEventPrefix := "Custom Event - "
 	if trigger.Type == "customEvent" && !strings.HasPrefix(trigger.Name, customEventPrefix) {
@@ -17,7 +18,56 @@ func customEvents(trigger *gtm.Trigger) error {
 	return nil
 }
 
-var triggerValidators = []func(trigger *gtm.Trigger) error{customEvents}
+// ensure CSS selectors always begin with `.js_`
+func enforceSelectors(trigger *gtm.Trigger) error {
+	if len(trigger.Filter) < 1 {
+		return nil
+	}
+
+	const jsPrefix = ".js_"
+	cssSelector := ""
+
+	// loop over each filter
+	for _, filter := range trigger.Filter {
+		if filter.Type == "cssSelector" {
+
+			// each filter param
+			for _, p := range filter.Parameter {
+
+				// unfortunately this is the very non-descriptive name the GTM api gives us
+				// this will be the value, or the actual CSS selector paramater
+				if p.Key == "arg1" {
+					cssSelector = p.Value
+					hasFormattingError := false
+
+					// split the CSS selector string
+					selectors := strings.Split(cssSelector, " ")
+					for _, selector := range selectors {
+
+						// allow all ``.js_SomeClass` and `*` CSS class names
+						// @TODO we may need to add a few more options for child selectors
+						if !strings.HasPrefix(selector, jsPrefix) && selector != "*" {
+							hasFormattingError = true
+							break
+						}
+					}
+
+					if hasFormattingError {
+						errMsg := fmt.Sprintf("Trigger `%s` failed validation, Make sure your css selectors begin with `%s`. Right now they look like: `%s`",
+							trigger.Name,
+							jsPrefix,
+							cssSelector,
+						)
+						return validationError(errMsg)
+					}
+				}
+			}
+		}
+	}
+	return nil
+}
+
+var triggerValidators = []func(trigger *gtm.Trigger) error{customEvents, enforceSelectors}
 
 // ValidateTrigger takes a gtm trigger and runs all of the relevant validation functions
 func ValidateTrigger(trigger *gtm.Trigger) (errors []error) {
@@ -64,7 +114,7 @@ func ValidateVariable(variable *gtm.Variable) (errors []error) {
 	return errors
 }
 
-func lowerCaseEventCategory(tag *gtm.Tag) error {
+func formattedEventParams(tag *gtm.Tag) error {
 	rawEventMap := make(map[string]string)
 	for _, param := range tag.Parameter {
 		// ignore properties that have GTM built in variables,
@@ -84,24 +134,26 @@ func lowerCaseEventCategory(tag *gtm.Tag) error {
 		}
 	}
 
-	lowerCaseMap := make(map[string]string)
+	properlyFormattedMap := make(map[string]string)
 	for key, val := range rawEventMap {
-		lowerCaseMap[key] = strings.ToLower(val)
+		// lower case and replace all `-` with " "
+		formattedVal := strings.ToLower(val)
+		properlyFormattedMap[key] = strings.Replace(formattedVal, "-", " ", -1)
 	}
 
-	if !reflect.DeepEqual(rawEventMap, lowerCaseMap) {
+	if !reflect.DeepEqual(rawEventMap, properlyFormattedMap) {
 		errMsg := fmt.Sprintf(
-			"Tag `%s` failed validation, ensure all of these values are lower case! `%v`.  It should probably be: `%v`",
+			"Tag `%s` failed validation, ensure values are lower case and formatted correctly! `%v`.  It should probably be: `%v`",
 			tag.Name,
 			rawEventMap,
-			lowerCaseMap,
+			properlyFormattedMap,
 		)
 		return validationError(errMsg)
 	}
 	return nil
 }
 
-var tagValidators = []func(tag *gtm.Tag) error{lowerCaseEventCategory}
+var tagValidators = []func(tag *gtm.Tag) error{formattedEventParams}
 
 // ValidateTag takes a gtm tag and runs all of the relevant validation functions
 func ValidateTag(tag *gtm.Tag) (errors []error) {
