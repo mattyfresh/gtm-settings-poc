@@ -16,7 +16,7 @@ ADD . go/src/automation-chatops-bot/
 
 WORKDIR /go/src/automation-chatops-bot
 
-RUN go get -u golang.org/x/oauth2/google && go get -u google.golang.org/api/tagmanager/v2 && go get -u github.com/nlopes/slack
+RUN go get -u golang.org/x/oauth2/google google.golang.org/api/tagmanager/v2 github.com/nlopes/slack
 
 RUN go build -o gobot main.go gtm_controller.go gtm_validators.go gtm_service.go
 
