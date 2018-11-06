@@ -12,13 +12,13 @@ ENV SLACK_BOT_API_TOKEN $SLACK_BOT_API_TOKEN
 
 RUN mkdir -p go/src/automation-chatops-bot
 
-ADD . go/src/automation-chatops-bot/
+ADD . /go/src/automation-chatops-bot/
 
 WORKDIR /go/src/automation-chatops-bot
+RUN ls -a && pwd
 
 RUN go get -u golang.org/x/oauth2/google google.golang.org/api/tagmanager/v2 github.com/nlopes/slack
 
-RUN pwd && ls -al
 RUN go build -o gobot main.go gtm_controller.go gtm_validators.go gtm_service.go
 
 CMD ["go/src/automation-chatops-bot/gobot"]
