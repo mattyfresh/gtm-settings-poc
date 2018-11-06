@@ -1,19 +1,20 @@
 #!/bin/bash
 
-GTM_CONFIG_REPO_URL="https://github.com/mattyfresh/gtm-settings-poc"
+set -eu
+
 BRANCH_NAME="$1"
 
 # Config
-git config --global credential.helper "cache --timeout=120"
+# git config --global credential.helper "cache --timeout=120"
 
 # @TODO use bot email here
-git config --global user.email "matthew.padich@gmail.com"
-git config --global user.name "Slack Bot!"
+# git config --global user.email "matthew.padich@gmail.com"
+# git config --global user.name "Slack Bot!"
 
 rm -rf gtm-settings-poc
 
 # Clone config repo and copy new config into it
-git clone "$GTM_CONFIG_REPO_URL.git"
+git clone "https://${GH_USER}:${GH_PASSWORD}@github.com/mattyfresh/gtm-settings-poc.git"
 cp gtm-config.json ./gtm-settings-poc/gtm-config.json
 
 # cd into config repo, commit and push
@@ -23,8 +24,8 @@ git add gtm-config.json
 git commit -m "update GTM config via Slack on $(date)"
 
 # Push quietly to prevent showing the token in log
-git push -q https://${GITHUB_ACCESS_TOKEN}@github.com/mattyfresh/gtm-settings-poc.git $BRANCH_NAME
+git push -q "https://${GH_USER}:${GH_PASSWORD}@github.com/mattyfresh/gtm-settings-poc.git $BRANCH_NAME"
 
 # Echo out link to create new PR
 # @NB '@@@' is for easy text parsing for output in Slack
-echo "@@@$GTM_CONFIG_REPO_URL/pull/new/$BRANCH_NAME@@@"
+echo "@@@https://github.com/mattyfresh/gtm-settings-poc/pull/new/$BRANCH_NAME@@@"
