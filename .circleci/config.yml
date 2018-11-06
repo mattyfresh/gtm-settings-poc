@@ -1,19 +1,13 @@
 version: 2
 jobs:
   build_and_publish_bot:
-    working_directory: /go/src/github.com/artnetworldwide/automation-chatops-bot
+    working_directory: ~/wd
     docker:
-      - image: circleci/golang:1.11.1
+      - image: circleci/python:3.6-jessie-node
     steps:
       - setup_remote_docker:
           docker_layer_caching: true
       - checkout
-      - run:
-          name: install dependencies
-          command: |
-            go get -u golang.org/x/oauth2/google
-            go get -u google.golang.org/api/tagmanager/v2
-            go get -u github.com/nlopes/slack
       - run:
           name: set up cicd tools
           command: |
